@@ -8,3 +8,4 @@ for (let i = 0; i < 10; i++) {
 
 alert("Hello worl!");
 console.log("Hello world!");
+// test comment
