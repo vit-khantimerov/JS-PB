@@ -36,9 +36,9 @@ var ten = 0;
 for (let i = 0, sum; i < legnth; i++) {
     arrResult[i] = ten;
     ten = 0;
-    console.log('res[' + i + ']=' + arrResult[i]);
+    // console.log('res[' + i + ']=' + arrResult[i]);
     if (short[i] != undefined) {
-        sum = long[i] + short[i];
+        sum = long[i] + short[i] + arrResult[i];
     } else {
         sum = long[i] + arrResult[i];
     }
@@ -50,11 +50,12 @@ for (let i = 0, sum; i < legnth; i++) {
         // sum = sum % 10;
     }
 
-    console.log('sum=' + sum + ' ten=' + ten);
+    // console.log('sum=' + sum + ' ten=' + ten);
     
+    // arrResult[i + 1] = ten;
     arrResult[i] += sum;
-    arrResult[i + 1] = ten;
-    console.log('res[' + i + ']=' + arrResult[i]);
+
+    console.log('sum=' + sum + ' ten=' + ten + ' res[' + i + ']=' + arrResult[i]);
 
     sum = 0;
     // ten = 0;
