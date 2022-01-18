@@ -30,24 +30,24 @@ function summ (arr1, arr2){
 
 
 // Определяем длинный массив как базу для итога.
-    var legnth;
+    var length;
     var long = new Array;
     var short = new Array;
 
 
     if (arr1.length >= arr2.length) {
-        legnth = arr1.length;
+        length = arr1.length;
         long = arr1.reverse(); // реверс массива для удобства итерраций
         short = arr2.reverse();
     } else {
-        legnth = arr2.length;
+        length = arr2.length;
         long = arr2.reverse();
         short = arr1.reverse();
     }
 
     var ten = 0; // =1 при сумме >= 10 (переходящая единица)
 
-    for (let i = 0, sum; i < legnth; i++) {
+    for (let i = 0, sum; i < length; i++) {
         long[i] += ten; // добавляем переходящую единицу
         if (typeof(short[i]) === "number") { 
         // if (short[i] != undefined) {
@@ -67,7 +67,7 @@ function summ (arr1, arr2){
     }
 
     if (ten == 1) {
-        long[legnth] = 1; // добаляем новый элемент (1) в конец длинного массива, 
+        long[length] = 1; // добавляем новый элемент (1) в конец длинного массива, 
                           // если сумма первых разрядов >= 10 
     }
 
