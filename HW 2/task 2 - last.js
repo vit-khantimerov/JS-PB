@@ -24,17 +24,14 @@ console.log(solution([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
 
 //  Решение
 
-
 function solution (a, b){
     // console.log('array 1 : ' + a);
     // console.log('array 2 : ' + b);
-
 
 // Определяем длинный массив как базу для итога.
     var length;
     var long = new Array;
     var short = new Array;
-
 
     if (a.length >= b.length) {
         length = a.length;
@@ -92,7 +89,7 @@ console.log(solution([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
 // // [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
-// Мой результат:
+// Мои результаты = результатам в условии.
 // [ 8, 0, 7 ]
 // [ 5, 8, 7 ]
 // [ 1, 1, 1 ]
