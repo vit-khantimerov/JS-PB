@@ -47,7 +47,7 @@ function solution (a, b){
 
     for (let i = 0, sum; i < length; i++) {
         long[i] += ten; // добавляем переходящую единицу
-        if (typeof(short[i]) === "number") { 
+        if (typeof short[i] === "number") { 
         // if (short[i] != undefined) {
             sum = long[i] + short[i];
         } else {
