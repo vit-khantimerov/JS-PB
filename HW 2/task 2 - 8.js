@@ -21,30 +21,58 @@ f('Content') // Error: parameter type should be an array
 f([]) // Error: parameter can't be an empty
 */
 
-
-
 //  Решение
 
-var f = function(arr) {
-    if (!Array.isArray(arr)) {
-        throw new Error('parameter type should be an array');
+function f(a) {
+  if (Array.isArray(a)) {
+    if (a.length === 0) {
+      throw new Error("parameter can't be an empty");
     }
-    if (arr.length == 0) {
-        throw new Error('parameter can\'t be an empty')
+    console.log(a.splice(0, 1)[0]); // при варианте a.splice(0,1) вывод будет [1], [2], [3]
+    if (a.length > 0) {
+      f(a);
     }
-    console.log(arr.shift());
-    if (arr.length > 0) f(arr);
+  } else {
+    throw new Error("parameter type should be an array");
+  }
 }
 
-// try {
-    f([1,2,3]);
-    f(1,2,3);
-    f('Content');
-    f([]);
-// } catch (e) {
-//     console.log('Error: ' + e.message);
-// }
+// f([1,2,3]);
+// f(1,2,3);
+// f('Content');
+// f([]);
 
+// Используем try - catch, иначе программа остановится после функции f(1,2,3)
+
+try {
+  f([1, 2, 3]);
+} catch (e) {
+  console.log("Error: " + e.message);
+}
+
+try {
+  f(1, 2, 3);
+} catch (e) {
+  console.log("Error: " + e.message);
+}
+
+try {
+  f("Content");
+} catch (e) {
+  console.log("Error: " + e.message);
+}
+
+try {
+  f([]);
+} catch (e) {
+  console.log("Error: " + e.message);
+}
 
 // Результат
 
+// 1
+// 2
+// 3
+// Error: parameter type should be an array
+// Error: parameter type should be an array
+// Error: parameter can't be an empty

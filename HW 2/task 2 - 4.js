@@ -1,8 +1,9 @@
 /* ДЗ 2. Задача 4
 
 Сделайте функцию `f`, которая принимает параметром число от 1 до 7, 
-а затем возвращает день недели на русском языке. 
-Данная функция должна обьязательно содержать проверку входного параметра, потому что принимать она может только числа от 1 до 7.
+    а затем возвращает день недели на русском языке. 
+Данная функция должна обьязательно содержать проверку входного параметра, 
+    потому что принимать она может только числа от 1 до 7.
 
 ```js
 f(1); // Воскресенье
@@ -16,31 +17,30 @@ f('1'); // Error: parameter type is not a Number
 //  Решение
 
 function f(a) {
-    // console.log(a);
     if (typeof a === 'number') {
         if (a >= 1 && a <= 7) {
             switch (a) {
                 case 1 :
                     console.log('Воскресенье');
-                break;
+                    break;
                 case 2 :
                     console.log('Понедельник');
-                break;
+                    break;
                 case 3 :
                     console.log('Вторник');
-                break;
+                    break;
                 case 4 :
                     console.log('Среда');
-                break;
+                    break;
                 case 5 :
                     console.log('Четверг');
-                break;
+                    break;
                 case 6 :
                     console.log('Пятница');
-                break;
+                    break;
                 case 7 :
                     console.log('Суббота');
-                break;
+                    break;
             }
         } else {
             throw new Error('parameter should be in the range of 1 to 7'); 
@@ -50,10 +50,36 @@ function f(a) {
     }
 }
 
-f(1); // Воскресенье
-f(2); // Понедельник
-f(8); // Error: parameter should be in the range of 1 to 7
-f('1'); // Error: parameter type is not a Number
+// f(1);
+// f(2);
+// f(8);
+// f('1');
+
+// Используем try - catch, иначе программа остановится после функции f(8)
+
+try {
+    f(1);
+} catch (e) {
+    console.log('Error: ' + e.message);
+}
+
+try {
+    f(2);
+} catch (e) {
+    console.log('Error: ' + e.message);
+}
+
+try {
+    f(8);
+} catch (e) {
+    console.log('Error: ' + e.message);
+}
+
+try {
+    f('1');
+} catch (e) {
+    console.log('Error: ' + e.message);
+}
 
 
 // Результат

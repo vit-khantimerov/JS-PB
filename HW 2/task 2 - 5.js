@@ -5,7 +5,8 @@
 Создайте для этого вспомогательную функцию `isPositive(-3)`, 
     которая параметром будет принимать число и возвращать true, если число положительное, 
     и false — если отрицательное. 
-    Данная функция должна обьязательно содержать проверку входного параметра, потому что принимать она может только число.
+Данная функция должна обьязательно содержать проверку входного параметра, 
+    потому что принимать она может только число.
 
 *Для добавление нового элемента в конец массива используйте метод push*
 
@@ -22,31 +23,29 @@ arr.push(2);
 console.log(arr[1]); // выведет число 2
 */
 
-
 //  Решение
+
 function isPositive(a) {
-    if (typeof a === 'number') { 
-        if (a > 0) {
-            return true;
-        } else {
-            return false;
-        }
+  if (typeof a === "number") {
+    if (a > 0) {
+      return true;
     } else {
-        throw new Error('parameter type is not a Number');
+      return false;
     }
+  } else {
+    throw new Error("parameter type is not a Number");
+  }
 }
 
 let arr = [1, 2, -4, 3, -9, -1, 7];
-let newArr = new Array;
+let newArr = new Array();
 
 for (let i of arr) {
-    if (isPositive(i) == true) {
-        newArr.push(i);
-    }
+  if (isPositive(i) === true) {
+    newArr.push(i);
+  }
 }
 console.log(newArr);
-
-
 
 // Результат
 
