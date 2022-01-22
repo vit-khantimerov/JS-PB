@@ -5,7 +5,7 @@
   },
   "Func Throw Error": {
 	"prefix": "trr",
-	"body": "function f(a) {\n\tif (typeof a === \"number\") {\n\t\t\n\t} else {\n\t\tthrow new Error(\"parameter type is not a Number\");\n\t}\n}"
+		"body": "function f(a) {\n\tif (typeof a === \"number\") {\n\t\t${1}\n\t} else {\n\t\tthrow new Error(\"parameter type is not a Number\");\n\t}\n}"
   },
   "zadacha": {
     "prefix": "zzz",
