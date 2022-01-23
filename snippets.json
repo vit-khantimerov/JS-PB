@@ -4,7 +4,7 @@
     "body": "console.log($1);\n"
   },
    "commnt /***/": {
-    "prefix": "cmm",
+    "prefix": "***",
     "body": "/************************/\n",
 	"description": "Insetr break line with *** "
   },
