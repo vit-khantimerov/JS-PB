@@ -14,7 +14,7 @@ f('Content'); // Error: parameter type is not a Number
 
 function f(a) {
   if (typeof a === "number") {
-    return a * a * a;
+    return a ** 3;
   } else {
     throw new Error("parameter type is not a Number");
   }
