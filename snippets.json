@@ -1,15 +1,22 @@
 {
-  "con_Log": {
+  "console_log": {
     "prefix": "cll",
-    "body": "console.log($1);$0"
+    "body": "console.log($1);\n"
   },
-  "Func Throw Error": {
+   "commnt /***/": {
+    "prefix": "cmm",
+    "body": "/************************/\n",
+	"description": "Insetr break line with *** "
+  },
+  "Func With Throw Not Number": {
 	"prefix": "trr",
-		"body": "function f(a) {\n\tif (typeof a === \"number\") {\n\t\t${1}\n\t} else {\n\t\tthrow new Error(\"parameter type is not a Number\");\n\t}\n}"
+	"body": "function f(a) {\n\tif (typeof a === \"number\") {\n\t\t${1:/*code*/}\n\t} else {\n\t\tthrow new Error(\"parameter type is not a Number\");\n\t}\n}",
+	"description": "Function with checking entries type"
   },
   "zadacha": {
     "prefix": "zzz",
-    "body": "//Урок Х. Задача Х\n\n\n\n// Решение\n\n\n\n// Результат\n\n\// "
+  "body": "//Урок ${1:Х}. Задача Х\n\n\n\n// Решение\n\n\n\n// Результат\n\n\// ",
+  "description": "Шапка для задачи и решения."
   },
   "import": {
     "prefix": "imp",
