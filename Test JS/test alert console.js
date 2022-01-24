@@ -20,3 +20,12 @@ console.log(`1a
 3c`);
 console.log(`summ = ${num + num}\nmulti = ${num * num}`);
 console.log(console.log());
+console.log();
+
+/* Is NULL > or < 0 ? *****************/
+let x = null;
+if (x <= 0 && x >= 0) {
+    console.log("x <= 0 && x >= 0 !!! Серьезно ???");
+} else {
+    console.log("Что вы там курите?");
+}
