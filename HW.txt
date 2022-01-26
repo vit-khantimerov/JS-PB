@@ -3,7 +3,7 @@ https://classroom.google.com/c/NDQ1MDUyNjcxMTc0
 
 Мой Гит
 https://github.com/vit-khantimerov/JS-PB
-https://github.com/vit-khantimerov/JS_PB  трансфер
+https://github.com/vit-khantimerov/JS_PB_TRANSFER  трансфер
 
 Скачать проект с Гита
 https://downgit.github.io/#/home

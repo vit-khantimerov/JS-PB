@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> -->
+</head>
+<body id="body" bgcolor='black' >
+    <p id="p0">Тест RGB цветов.</p>
+    
+    <script>
+        let a = 255, b = 200, c = 155;
+        document.getElementById("p0").style.color = `rgb(${a},${b},${c})`;
+        for (let i = 0; i < 256; i += 15) {
+            for (let j = 0; j < 256; j += 15) {
+                for (let k = 0; k < 256; k += 15) {
+                    ppp = document.createElement('p');
+                    document.getElementById('body').appendChild(ppp);
+                    ppp.innerHTML = `Цветная строка! RGB-код: ${i}.${j}.${k}`;
+                    // ppp.id = `p${i}.${j}.${k}`;
+                    // document.getElementById(ppp.id).style.color = `rgb(${i},${j},${k})`;
+                    ppp.style.color = `rgb(${i},${j},${k})`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

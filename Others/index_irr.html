@@ -1,0 +1,692 @@
+<!-- https://liveweave.com/ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+
+  </head>
+  <body  bgcolor="WhiteSmoke" style="font-family: Tahoma">
+   
+    <!-- ФОРМА УПРАЖНЕНИЯ 1 из 6 -->
+    
+    <form id='form61'> <!-- onclick="currGlagol.alertGlagol();" -->
+    <!--    -->
+     <table>
+      <tr><td id="tabHead6of1" width="300" align="center" border="0">Выберите правильную форму глагола.<br>Сначала форму 2, потом форму 3.</td>
+      </tr>
+     </table>
+     <table>
+      <tr>
+        <td id="Nr6of1" width="110" align="left" border="0" style="color: blue; font-size: 80%">1</td>
+        <!--<td width="30" align="center" border="0" style="color: blue; font-size: 80%"></td>
+        <td id="sel__" width="3" align="center" border="0" style="color: blue; font-size: 80%">10.</td> -->
+        <td ><span  align="center" border="0" style="color: darkblue; font-size: 80%">Уровень:</span> 
+        <select id="sell" onchange="getLevel(this.value)"  align="left" border="0" style="color: blue; font-size: 70%">
+          <option value = '105' style="color: darkblue; font-size: 90%">105 слов</option>
+          <option value = '179' style="color: darkblue; font-size: 90%">179 слов.</option>
+        </select>
+        
+</td></tr>
+    </table>
+    
+    <table id='tabHtml6of1' border="1"> 
+      <caption id="tabCaption" align="center">glagol 1 f1</caption>
+        <tr height="30" style="font-size: 110%">
+          <td id="td1" width="100" align="center" onclick="currGlagol.isCorrectForm(this.id, td1.textContent, arTab)">1</td>
+          <td id="td2" width="100" align="center" onclick="currGlagol.isCorrectForm(this.id, td2.textContent, arTab)">2</td>
+          <td id="td3" width="100" align="center" onclick="currGlagol.isCorrectForm(this.id, td3.textContent, arTab)">3</td>
+        </tr>
+        <tr height="30" style="font-size: 110%">
+          <td id="td4" width="100" align="center" onclick="currGlagol.isCorrectForm(this.id, td4.textContent, arTab)">4</td>
+          <td id="td5" width="100" align="center" onclick="currGlagol.isCorrectForm(this.id, td5.textContent, arTab)">5</td>
+          <td id="td6" width="100" align="center" onclick="currGlagol.isCorrectForm(this.id, td6.textContent, arTab)">6</td>
+      </tr>
+    </table>
+    <table>
+      <tr><td  id="td10" width="300" height="50" align="center" border="0"></td></tr>
+    </table>
+    <table  border="1">
+        <tr height="30">
+        <td id="td7" width="100" align="center">7</td>
+        <td id="td8" width="100" align="center">8</td>
+        <td id="td9" width="100" align="center">9</td>
+        </tr>
+     </table>
+     <p></p>
+     <input id='butSlGl' type="button" style="width:320Px;height:50Px" value="Следующий глагол" onclick="nextGlagol()">
+    
+    <p id=pp1></p>
+    <p id=pp2></p>
+    <p id=pp3></p>
+    <p id=pp4></p>
+    <p id=pp5></p>
+    <p id=pp6></p>
+    <p id=pp7></p>
+    </form>
+
+    <script>
+ 
+class Glagol {
+    ///// === конструктор глаголов ===
+    constructor(glagolNr,rus,f1,f2,f3,f4,f5,f6,f7,isKnown,rateKnown,isLearning,rateExersise,level) {
+         this.glagolNr = glagolNr,
+         this.formRus = rus,
+         this.form1 = f1,
+         this.form2 = f2,
+         this.form3 = f3,
+         this.form4 = f4,
+         this.form5 = f5,
+         this.form6 = f6,
+         this.form7 = f7,
+         this.isKnown = isKnown,
+         this.rateKnown = rateKnown,
+         this.isLearning = isLearning,
+         this.rateExersise = rateExersise,
+         this.level = level
+    }
+    ///// ========= методы ================
+    rateExeGlagol(glagol) { // изменяем счетчик упражнений со словом
+      this.rateExersise = this.rateExersise + 1;
+        alert(this.rateExersise);
+    }
+    /////
+    rateKnownGlagol(glagol) { // изменяем уровень знания глагола до 100 %
+      this.rateKnown = 100;
+        alert('Знание ' + this.form1 + ' = ' + this.rateKnown + ' %');
+    }
+    /////
+    isKnownGlagol(glagol) { // изменяем параметр "знание глагола" на true
+      this.isKnown = true;
+        alert(this.isKnown);
+    }
+    ///// проверка правильности выбранной формы
+    isCorrectForm(elId, clickedForm, tabArr) {
+      document.getElementById("td7").innerHTML = "Всего ответов: " + countTry6of1;
+      if (end6of1 < 2) {
+        let corrAnsver = false;
+        countTry6of1++;
+        if (clickedForm == correctForm) { // сравнение с правильной
+           corrAnsver = true;
+           countRight6of1++;
+           end6of1++;
+           currGlagol.rateExersise++;// если = то +1, переход к след. форме или финиш
+           document.getElementById("td10").innerHTML = '<span style="color: green; font-size: 110%">Правильно.<br>Теперь найдите форму 3.</span>';
+           correctForm = currGlagol.form3; //установить правильную форму 3
+           
+           if(end6of1 == 1) {
+             clearBackGround6of1();
+           }
+           
+           document.getElementById(elId).style.backgroundColor = 'LightGreen';
+           
+           if(end6of1 == 2) {
+             document.getElementById("td10").innerHTML = '<span style="color: blue; font-size: 110%">Перейдите к следующему слову</span>';
+           }
+
+         } else { // если нет = то повтор
+           corrAnsver = false;
+           document.getElementById("td10").innerHTML = '<span style="color: red; font-size: 110%">ОШИБКА!!!</span><br>Пробуйте еще.';
+           document.getElementById(elId).style.backgroundColor = 'LightCoral';
+         }
+         percentRight6of1 = Math.round(countRight6of1 / countTry6of1*100);
+      } else {
+        correctForm = 99999;
+        document.getElementById("td10").innerHTML = '<span style="color: purple; font-size: 110%">Перейдите к следующему слову</span>';
+      } 
+        document.getElementById("td7").innerHTML = "Всего ответов: " + countTry6of1;
+        document.getElementById("td8").innerHTML = "Правильных ответов: " + countRight6of1;
+        document.getElementById("td9").innerHTML = "Доля правильных : " + percentRight6of1 + ' %';
+        
+        
+        
+        return correctForm;
+    }
+    ///// END isCorrectForm
+}
+// ============ END of class Glagol =============
+
+  /////
+    function alertGlagol(glagol) { // выводим содержимое экземпляла класса Glagol
+        for (let key in this) {
+          alert( key + ' is ' + this[key]);
+        }
+        alert('FINISH');
+    }    
+    /////
+  
+ /////рандомное заполнение индексами для упражения 1из6
+ function randomArray(minimum, colvo) { // (мин значение, кол-во элементов)
+  let randomArrayRet = [];
+  let randomArrayRetL = [];
+  randomArrayRet[0] = Math.floor(Math.random() * colvo + minimum);
+  let randomTemp;
+  let x;  // счетчик несовпадений ячеек
+  
+  for (let i = 1; i < colvo; i++) { // заолняем массив от 1 до макс
+    x = 0;
+    let j;
+    // проверка на неравенство предыдущим ячейкам
+    do {randomTemp = Math.floor(Math.random() * colvo + minimum);
+        x = 0;
+        for (j = i; j > 0; j--) {
+          if (randomTemp != randomArrayRet[j-1]) {
+            x++;
+          }
+        }
+       } while (x<i);
+     randomArrayRet[i] = randomTemp;
+   }
+   return randomArrayRet.slice();
+   
+ } ///// END randomArray   
+ 
+
+  
+/////массив из 6 форм глагола
+  function arrForTable6of1(glagol6of1, array6of1) { 
+    let arrForTable6of1Ret = [];
+    for (let i = 0; i < 6; i++) {
+      switch(array6of1[i]) {
+        case 1:
+          arrForTable6of1Ret[i] = glagol6of1.form1;
+        break;
+        case 2:
+          arrForTable6of1Ret[i] = glagol6of1.form2;
+        break;
+        case 3:
+          arrForTable6of1Ret[i] = glagol6of1.form7;
+        break;
+        case 4:
+          arrForTable6of1Ret[i] = glagol6of1.form4;
+        break;
+        case 5:
+          arrForTable6of1Ret[i] = glagol6of1.form5;
+        break;
+        case 6:
+          arrForTable6of1Ret[i] = glagol6of1.form6;
+        break;
+        default:
+          arrForTable6of1Ret[i] = 'ERROR';
+        break
+      }
+    }
+    arrForTable6of1Ret[6] = glagol6of1.form1;
+    arrForTable6of1Ret[7] = glagol6of1.form2;
+    arrForTable6of1Ret[8] = glagol6of1.form3;
+    return arrForTable6of1Ret;
+  }
+
+  // вносим 6 рандомных форм глагола в таблицу -->
+      function Innering6of1() {
+        document.getElementById("tabCaption").innerHTML = '<span style="font-size: 125%">Первая форма: <b>' + currGlagol.form1 + '</b></span>  <br>перевод: ' + currGlagol.formRus;
+        document.getElementById("Nr6of1").innerHTML = "Слово " + iAOG + " из " + currentLevel + ". ";
+
+        document.getElementById("td1").innerHTML = arTab[0];
+        document.getElementById("td2").innerHTML = arTab[1];
+        document.getElementById("td3").innerHTML = arTab[2];
+        document.getElementById("td4").innerHTML = arTab[3];
+        document.getElementById("td5").innerHTML = arTab[4];
+        document.getElementById("td6").innerHTML = arTab[5];
+        document.getElementById("td7").innerHTML = "Всего ответов: " + countTry6of1;
+        document.getElementById("td8").innerHTML = "Правильных ответов: " + countRight6of1;
+        document.getElementById("td9").innerHTML = "Доля правильных : " + percentRight6of1 + ' %';
+        document.getElementById("td10").innerHTML = ' ';
+        
+        clearBackGround6of1();
+      }
+  // END function Innering6of1 
+  
+  /////
+      function clearBackGround6of1() {
+        document.getElementById("td1").style.backgroundColor = 'Lavender';
+        document.getElementById("td2").style.backgroundColor = 'Lavender';
+        document.getElementById("td3").style.backgroundColor = 'Lavender';
+        document.getElementById("td4").style.backgroundColor = 'Lavender';
+        document.getElementById("td5").style.backgroundColor = 'Lavender';
+        document.getElementById("td6").style.backgroundColor = 'Lavender';
+      }
+  /////  
+
+  ///// вызов следующего слагола
+  function nextGlagol() {
+    iAOG++;
+    if(iAOG > mainArrayOfRndIndexesL.length) {
+      document.getElementById("tabHead6of1").innerHTML = '<span style="color: red; font-size: 125%">Глаголов больше не осталось :(</span><br><span style="color: blue; font-size: 110%">Перегрузите страницу, чтобы повторить упражнение сначала.</span>';
+    } else {
+      currGlagol = arrayOfGlagols[mainArrayOfRndIndexesL[iAOG-1]];
+      arRnd = randomArray(1, 6);
+      arTab = arrForTable6of1(currGlagol, arRnd);
+      correctForm  = currGlagol.form2;
+      end6of1 = 0;
+      Innering6of1();
+    }
+  }
+  ///// END nextGlagol()
+
+///// массив глаголов для упражнения с учетом уровня
+function leveledArray (someArray) {
+  let j;
+  let jj=[];
+  jj.length = 0;
+  let k=0;
+  for (let i=0; i < someArray.length; i++) {
+    if (arrayOfGlagols[someArray[i]].level <= currentLevel) {
+      jj[k] = someArray[i];
+      k++;
+    }
+  }
+  return jj;
+}
+///// END leveledArray
+
+/////
+  function getLevel(curLel) {
+    currentLevel = curLel;
+    //document.getElementById("sel__").innerHTML = currentLevel + '.';
+    document.getElementById("tabHead6of1").innerHTML = 'Выберите правильную форму глагола.<br>Сначала форму 2, потом форму 3.';
+    //переоределяем начальные переменные
+    iAOG = 0;
+    mainArrayOfRndIndexesL = leveledArray(mainArrayOfRndIndexes);
+    arRnd = randomArray(1, 6); // массив 6 случайных индексов
+    currGlagol = arrayOfGlagols[mainArrayOfRndIndexesL[iAOG]]; // текуший глагол для 6из1
+    arTab = arrForTable6of1(currGlagol, arRnd); // массив 6 случайных форм глаголов
+    correctForm  = currGlagol.form2;
+    end6of1 = 0;         // конец списка 6из1
+
+    nextGlagol(iAOG);
+    
+  }
+///// end of getLevel()
+
+////////// КОНЕЦ ФУНКЦИЙ /////////////
+
+///// список глаголов
+      let glagolAbide = new Glagol(1,"ждать, терпеть","abide","abode (abided)","abode (abided)","abided","abiden","abident","abode (abided)",false,0,true,0,15);
+      let glagolArise = new Glagol(2,"возникнуть, подняться","arise","arose","arisen","arised","arisen","arisent","arisen",false,0,true,0,10);
+      let glagolAwake = new Glagol(3,"будить, проснуться","awake","awoke","awoken","awaked","awaken","awakent","awoken",false,0,true,0,10);
+      let glagolBe = new Glagol(4,"быть","be","was,were","been","bed","ben","bent","been",false,0,true,0,10);
+      let glagolBear = new Glagol(5,"нести, родить","bear","bore","born(e)","beared","bearen","bearet","born(e)",false,0,true,0,15);
+      let glagolBeat = new Glagol(6,"бить","beat","beat","beat","beated","beaten","beatet","beatent",false,0,true,0,10);
+      let glagolBecome = new Glagol(7,"стать","become","became","become","becomed","becomen","becoment","become",false,0,true,0,10);
+      let glagolBefall = new Glagol(8,"случиться","befall","befell","befallen","befalled","befallen","befallet","befallen",false,0,true,0,15);
+      let glagolBegin = new Glagol(9,"начать","begin","began","begun","begined","beginen","beginet","begun",false,0,true,0,10);
+      let glagolBend = new Glagol(10,"согнуть","bend","bent","bent (bended)","bended","benden","bendet","bent (bended)",false,0,true,0,15);
+      let glagolBeseech = new Glagol(11,"умолять, упрашивать","beseech","besought","besought","beseeched","beseechen","beseechet","besought",false,0,true,0,15);
+      let glagolBid = new Glagol(12,"предлагать, просить","bid","bad(e) (bid)","bid(den)","bided","biden","bidet","bid(den)",false,0,true,0,15);
+      let glagolBind = new Glagol(13,"связать","bind","bound","bound","binded","binden","bindet","bound",false,0,true,0,15);
+      let glagolBite = new Glagol(14,"кусать","bite","bit","bitten","bited","biten","bitent","bitten",false,0,true,0,10);
+      let glagolBleed = new Glagol(15,"кровоточить","bleed","bled","bled","bleeded","bleeden","bleedet","bled",false,0,true,0,15);
+      let glagolBlow = new Glagol(16,"дуть","blow","blew","blown","blowed","blowen","blowet","blown",false,0,true,0,10);
+      let glagolBreak = new Glagol(17,"ломать","break","broke","broken","breaked","breaken","breaket","broken",false,0,true,0,10);
+      let glagolBreed = new Glagol(18,"выращивать","breed","bred","bred","breeded","breeden","breedet","bred",false,0,true,0,15);
+      let glagolBring = new Glagol(19,"принести","bring","brought","brought","bringed","bringen","bringet","brought",false,0,true,0,10);
+      let glagolBroadcast = new Glagol(20,"транслировать","broadcast","broadcast","broadcast","broadcasted","broadcasten","broadcastet","broadcastent",false,0,true,0,10);
+      let glagolBuild = new Glagol(21,"строить","build","built","built","builded","builden","buildet","built",false,0,true,0,10);
+      let glagolBurn = new Glagol(22,"гореть","burn","burnt","brunt","burned","burnen","burnet","brunt",false,0,true,0,10);
+      let glagolBurst = new Glagol(23,"разразиться, взорваться","burst","burst","burst","bursted","bursten","burstet","burstent",false,0,true,0,15);
+      let glagolBuy = new Glagol(24,"купить","buy","bought","bought","buyed","buyen","buyet","bought",false,0,true,0,10);
+      let glagolCast = new Glagol(25,"бросать","cast","cast","cast","casted","casten","castet","castent",false,0,true,0,15);
+      let glagolCatch = new Glagol(26,"ловить","catch","caught","caught","catched","catchen","catchet","caught",false,0,true,0,10);
+      let glagolChoose = new Glagol(27,"выбирать","choose","chose","chosen","choosed","choosen","choosent","chosen",false,0,true,0,10);
+      let glagolCleave = new Glagol(28,"сечь","cleave","clove (cleft)","cloven (cleft)","cleaved","cleaven","cleavent","cloven (cleft)",false,0,true,0,15);
+      let glagolCling = new Glagol(29,"цепляться","cling","clung","clung","clinged","clingen","clinget","clung",false,0,true,0,15);
+      let glagolClothe = new Glagol(30,"одеть","clothe","clothed","clothed","clothed","clothen","clothent","clothed",false,0,true,0,15);
+      let glagolCome = new Glagol(31,"прийти","come","came","come","comed","comen","coment","come",false,0,true,0,10);
+      let glagolCost = new Glagol(32,"стоить","cost","cost","cost","costed","costen","costet","costent",false,0,true,0,10);
+      let glagolCreep = new Glagol(33,"ползти","creep","crept","crept","creeped","creepen","creepet","crept",false,0,true,0,15);
+      let glagolCut = new Glagol(34,"резать","cut","cut","cut","cuted","cuten","cutet","cutent",false,0,true,0,10);
+      let glagolDare = new Glagol(35,"дерзать, рискнуть","dare","durst (dared)","dared","dared","daren","darent","dared",false,0,true,0,15);
+      let glagolDeal = new Glagol(36,"иметь дело","deal","dealt","dealt","dealed","dealen","dealet","dealt",false,0,true,0,15);
+      let glagolDig = new Glagol(37,"копать","dig","dug","dug","diged","digen","diget","dug",false,0,true,0,15);
+      let glagolDo = new Glagol(38,"делать","do","did","done","doed","doen","doet","done",false,0,true,0,10);
+      let glagolDraw = new Glagol(39,"рисовать","draw","drew","drew","drawed","drawen","drawet","drew",false,0,true,0,10);
+      let glagolDream = new Glagol(40,"мечтать","dream","dreamt","dreamt","dreamed","dreamen","dreamet","dreamt",false,0,true,0,10);
+      let glagolDrink = new Glagol(41,"пить","drink","drank","drunk","drinked","drinken","drinket","drunk",false,0,true,0,10);
+      let glagolDrive = new Glagol(42,"ехать, водить","drive","drove","driven","drived","driven","drivent","driven",false,0,true,0,10);
+      let glagolDwell = new Glagol(43,"обитать, задерживаться","dwell","dwelt","dwelt","dwelled","dwellen","dwellet","dwelt",false,0,true,0,15);
+      let glagolEat = new Glagol(44,"есть","eat","ate","eaten","eated","eaten","eatet","eaten",false,0,true,0,10);
+      let glagolFall = new Glagol(45,"падать","fall","fell","fallen","falled","fallen","fallet","fallen",false,0,true,0,10);
+      let glagolFeed = new Glagol(46,"кормить","feed","fed","fed","feeded","feeden","feedet","fed",false,0,true,0,10);
+      let glagolFeel = new Glagol(47,"чувствовать","feel","felt","felt","feeled","feelen","feelet","felt",false,0,true,0,10);
+      let glagolFight = new Glagol(48,"сражаться","fight","fought","fought","fighted","fighten","fightet","fought",false,0,true,0,10);
+      let glagolFind = new Glagol(49,"находить","find","found","found","finded","finden","findet","found",false,0,true,0,10);
+      let glagolFlee = new Glagol(50,"бежать, спасаться","flee","fled","fled","fleed","fleen","fleent","fled",false,0,true,0,15);
+      let glagolFling = new Glagol(51,"бросить","fling","flung","flung","flinged","flingen","flinget","flung",false,0,true,0,15);
+      let glagolFly = new Glagol(52,"летать","fly","flew","flown","flyed","flyen","flyet","flown",false,0,true,0,10);
+      let glagolForbid = new Glagol(53,"запретить","forbid","forbade","forbidden","forbided","forbiden","forbidet","forbidden",false,0,true,0,10);
+      let glagolForesee = new Glagol(54,"предвидеть","foresee","foresaw","foreseen","foreseed","foreseen","foreseent","foreseen",false,0,true,0,10);
+      let glagolForget = new Glagol(55,"забыть","forget","forgot","forgotten","forgeted","forgeten","forgetet","forgotten",false,0,true,0,10);
+      let glagolForgive = new Glagol(56,"простить","forgive","forgave","forgiven","forgived","forgiven","forgivent","forgiven",false,0,true,0,10);
+      let glagolFreeze = new Glagol(57,"замораживать","freeze","froze","froze","freezed","freezen","freezent","froze",false,0,true,0,10);
+      let glagolGet = new Glagol(58,"получить","get","got","got (goten)","geted","geten","getet","got (goten)",false,0,true,0,10);
+      let glagolGild = new Glagol(59,"позолотить","gild","gilt (gilded)","gilt (gilded)","gilded","gilden","gildet","gilt (gilded)",false,0,true,0,15);
+      let glagolGive = new Glagol(60,"дать","give","gave","given","gived","given","givent","given",false,0,true,0,10);
+      let glagolGo = new Glagol(61,"идти","go","went","gone","goed","goen","goet","gone",false,0,true,0,10);
+      let glagolGrind = new Glagol(62,"толочь, молоть","grind","ground","ground","grinded","grinden","grindet","ground",false,0,true,0,15);
+      let glagolGrow = new Glagol(63,"расти","grow","grew","grew","growed","growen","growet","grew",false,0,true,0,10);
+      let glagolHang = new Glagol(64,"висеть, повесить","hang","hung","hung","hanged","hangen","hanget","hung",false,0,true,0,10);
+      let glagolHave = new Glagol(65,"иметь","have","had","had","haved","haven","havent","had",false,0,true,0,10);
+      let glagolHear = new Glagol(66,"слышать","hear","heard","heard","heared","hearen","hearet","heard",false,0,true,0,10);
+      let glagolHew = new Glagol(67,"рубить, тесать","hew","hewed","hewed (hewn)","hewed","hewen","hewet","hewed (hewn)",false,0,true,0,15);
+      let glagolHide = new Glagol(68,"прятать","hide","hid","hidden","hided","hiden","hident","hidden",false,0,true,0,10);
+      let glagolHit = new Glagol(69,"ударить, попасть","hit","hit","hit","hited","hiten","hitet","hitent",false,0,true,0,10);
+      let glagolHold = new Glagol(70,"держать","hold","held","held","holded","holden","holdet","held",false,0,true,0,10);
+      let glagolHurt = new Glagol(71,"причинить боль","hurt","hurt","hurt","hurted","hurten","hurtet","hurtent",false,0,true,0,10);
+      let glagolInput = new Glagol(72,"ввести","input","input","input","inputed","inputen","inputet","inputent",false,0,true,0,10);
+      let glagolKeep = new Glagol(73,"хранить","keep","kept","kept","keeped","keepen","keepet","kept",false,0,true,0,10);
+      let glagolKneel = new Glagol(74,"становиться на колени","kneel","knelt","knelt","kneeled","kneelen","kneelet","knelt",false,0,true,0,15);
+      let glagolKnit = new Glagol(75,"вязать","knit","knit","knit","knited","kniten","knitet","knitent",false,0,true,0,10);
+      let glagolKnow = new Glagol(76,"знать","know","knew","known","knowed","knowen","knowet","known",false,0,true,0,10);
+      let glagolLay = new Glagol(77,"класть","lay","laid","laid","layed","layen","layet","laid",false,0,true,0,10);
+      let glagolLead = new Glagol(78,"вести","lead","led","led","leaded","leaden","leadet","led",false,0,true,0,10);
+      let glagolLean = new Glagol(79,"опереться","lean","leant (leaned)","leant (leaned)","leaned","leanen","leanet","leant (leaned)",false,0,true,0,15);
+      let glagolLeap = new Glagol(80,"прыгать","leap","leapt (leaped)","leapt (leaped)","leaped","leapen","leapet","leapt (leaped)",false,0,true,0,15);
+      let glagolLearn = new Glagol(81,"учить","learn","learnt","learnt","learned","learnen","learnet","learnt",false,0,true,0,10);
+      let glagolLeave = new Glagol(82,"оставить","leave","left","left","leaved","leaven","leavent","left",false,0,true,0,10);
+      let glagolLend = new Glagol(83,"одолжить","lend","lent","lent","lended","lenden","lendet","lent",false,0,true,0,10);
+      let glagolLet = new Glagol(84,"пустить","let","let","let","leted","leten","letet","letent",false,0,true,0,10);
+      let glagolLie = new Glagol(85,"лгать","lie","lay","lay","lied","lien","lient","lay",false,0,true,0,10);
+      let glagolLight = new Glagol(86,"осветить","light","lit/lighted","lit/lighted","lighted","lighten","lightet","lit/lighted",false,0,true,0,10);
+      let glagolLose = new Glagol(87,"терять","lose","lost","lost","losed","losen","losent","lost",false,0,true,0,10);
+      let glagolMake = new Glagol(88,"делать","make","made","made","maked","maken","makent","made",false,0,true,0,10);
+      let glagolMean = new Glagol(89,"подразумевать","mean","meant","meant","meaned","meanen","meanet","meant",false,0,true,0,10);
+      let glagolMeet = new Glagol(90,"встретить","meet","met","met","meeted","meeten","meetet","met",false,0,true,0,10);
+      let glagolMishear = new Glagol(91,"ослышаться","mishear","misheard","misheard","misheared","mishearen","mishearet","misheard",false,0,true,0,15);
+      let glagolMislead = new Glagol(92,"ввести в заблуждение","mislead","misled","misled","misleaded","misleaden","misleadet","misled",false,0,true,0,15);
+      let glagolMistake = new Glagol(93,"неправильно понимать, ошибиться","mistake","mistook","mistaken","mistaked","mistaken","mistakent","mistaken",false,0,true,0,15);
+      let glagolMow = new Glagol(94,"косить","mow","mowed","mown","mowed","mowen","mowet","mown",false,0,true,0,15);
+      let glagolOffset = new Glagol(95,"возмещать","offset","offset","offset","offseted","offseten","offsetet","offsetent",false,0,true,0,10);
+      let glagolOvertake = new Glagol(96,"догнать","overtake","overtook","overtaken","overtaked","overtaken","overtakent","overtaken",false,0,true,0,10);
+      let glagolPay = new Glagol(97,"платить","pay","paid","paid","payed","payen","payet","paid",false,0,true,0,10);
+      let glagolProve = new Glagol(98,"доказывать","prove","proved","proven","proved","proven","provent","proven",false,0,true,0,10);
+      let glagolPut = new Glagol(99,"класть","put","put","put","puted","puten","putet","putent",false,0,true,0,10);
+      let glagolRead = new Glagol(100,"читать","read","read (red)","read (red)","readed","readen","readet","read (red)",false,0,true,0,10);
+      let glagolRebuild = new Glagol(101,"перестроить","rebuild","rebuilt","rebuilt","rebuilded","rebuilden","rebuildet","rebuilt",false,0,true,0,15);
+      let glagolRide = new Glagol(102,"ездить верхом","ride","rode","ridden","rided","riden","rident","ridden",false,0,true,0,10);
+      let glagolRing = new Glagol(103,"звонить","ring","rang","rung","ringed","ringen","ringet","rung",false,0,true,0,10);
+      let glagolRise = new Glagol(104,"подняться","rise","rose","risen","rised","risen","risent","risen",false,0,true,0,10);
+      let glagolRun = new Glagol(105,"бежать","run","ran","run","runed","runen","runet","run",false,0,true,0,10);
+      let glagolSaw = new Glagol(106,"пилить","saw","sawed","sawn (sawed)","sawed","sawen","sawet","sawn (sawed)",false,0,true,0,15);
+      let glagolSay = new Glagol(107,"говорить","say","said","said","sayed","sayen","sayet","said",false,0,true,0,10);
+      let glagolSee = new Glagol(108,"видеть","see","saw","seen","seed","seen","seent","seen",false,0,true,0,10);
+      let glagolSeek = new Glagol(109,"искать","seek","sought","sought","seeked","seeken","seeket","sought",false,0,true,0,15);
+      let glagolSell = new Glagol(110,"продавать","sell","sold","sold","selled","sellen","sellet","sold",false,0,true,0,10);
+      let glagolSend = new Glagol(111,"послать","send","sent","sent","sended","senden","sendet","sent",false,0,true,0,10);
+      let glagolSet = new Glagol(112,"устанавливать","set","set","set","seted","seten","setet","setent",false,0,true,0,10);
+      let glagolSew = new Glagol(113,"шить","sew","sewed","sewed (sewn)","sewed","sewen","sewet","sewed (sewn)",false,0,true,0,15);
+      let glagolShake = new Glagol(114,"трясти","shake","shook","shaken","shaked","shaken","shakent","shaken",false,0,true,0,10);
+      let glagolShave = new Glagol(115,"бриться","shave","shaved","shaved (shaven)","shaved","shaven","shavent","shaved (shaven)",false,0,true,0,15);
+      let glagolShear = new Glagol(116,"стричь","shear","sheared","shorn","sheared","shearen","shearet","shorn",false,0,true,0,15);
+      let glagolShed = new Glagol(117,"проливать, сбрасывать","shed","shed","shed","sheded","sheden","shedet","shedent",false,0,true,0,15);
+      let glagolShine = new Glagol(118,"светить","shine","shined","shined","shined","shinen","shinent","shined",false,0,true,0,10);
+      let glagolShoe = new Glagol(119,"подковывать","shoe","shod","shod","shoed","shoen","shoent","shod",false,0,true,0,15);
+      let glagolShoot = new Glagol(120,"стрелять","shoot","shot","shot","shooted","shooten","shootet","shot",false,0,true,0,10);
+      let glagolShow = new Glagol(121,"показывать","show","showed","shown (showed)","showed","showen","showet","shown (showed)",false,0,true,0,10);
+      let glagolShrink = new Glagol(122,"сокращать","shrink","shrank","shrunk","shrinked","shrinken","shrinket","shrunk",false,0,true,0,15);
+      let glagolShut = new Glagol(123,"закрывать","shut","shut","shut","shuted","shuten","shutet","shutent",false,0,true,0,10);
+      let glagolSing = new Glagol(124,"петь","sing","sang","sung","singed","singen","singet","sung",false,0,true,0,10);
+      let glagolSink = new Glagol(125,"опускаться","sink","sank","sunk","sinked","sinken","sinket","sunk",false,0,true,0,15);
+      let glagolSit = new Glagol(126,"сидеть","sit","sat","sat","sited","siten","sitet","sat",false,0,true,0,10);
+      let glagolSleep = new Glagol(127,"спать","sleep","slept","slept","sleeped","sleepen","sleepet","slept",false,0,true,0,10);
+      let glagolSlide = new Glagol(128,"скользить","slide","slid","slid","slided","sliden","slident","slid",false,0,true,0,15);
+      let glagolSmell = new Glagol(129,"нюхать","smell","smelt","smelt","smelled","smellen","smellet","smelt",false,0,true,0,10);
+      let glagolSow = new Glagol(130,"сеять","sow","sowed","sowed (sown)","sowed","sowen","sowet","sowed (sown)",false,0,true,0,15);
+      let glagolSpeak = new Glagol(131,"говорить","speak","spoke","spoken","speaked","speaken","speaket","spoken",false,0,true,0,10);
+      let glagolSpeed = new Glagol(132,"спешить","speed","sped","sped","speeded","speeden","speedet","sped",false,0,true,0,15);
+      let glagolSpell = new Glagol(133,"произносить","spell","spelt (spelled)","spelt (spelled)","spelled","spellen","spellet","spelt (spelled)",false,0,true,0,15);
+      let glagolSpend = new Glagol(134,"тратить","spend","spent","spent","spended","spenden","spendet","spent",false,0,true,0,10);
+      let glagolSpill = new Glagol(135,"пролить","spill","spilt (spilled)","spilt (spilled)","spilled","spillen","spillet","spilt (spilled)",false,0,true,0,15);
+      let glagolSpin = new Glagol(136,"прясть","spin","spun (span)","spun","spined","spinen","spinet","spun",false,0,true,0,15);
+      let glagolSpit = new Glagol(137,"плевать","spit","spat","spat","spited","spiten","spitet","spat",false,0,true,0,15);
+      let glagolSplit = new Glagol(138,"расщепить","split","split","split","splited","spliten","splitet","splitent",false,0,true,0,15);
+      let glagolSpoil = new Glagol(139,"портить","spoil","spoilt (spoiled)","spoilt (spoiled)","spoiled","spoilen","spoilet","spoilt (spoiled)",false,0,true,0,15);
+      let glagolSpread = new Glagol(140,"распространиться","spread","spread","spread","spreaded","spreaden","spreadet","spreadent",false,0,true,0,15);
+      let glagolSpring = new Glagol(141,"возникать","spring","sprang","sprung","springed","springen","springet","sprung",false,0,true,0,15);
+      let glagolStand = new Glagol(142,"стоять","stand","stood","stood","standed","standen","standet","stood",false,0,true,0,10);
+      let glagolSteal = new Glagol(143,"украсть","steal","stole","stolen","stealed","stealen","stealet","stolen",false,0,true,0,10);
+      let glagolStick = new Glagol(144,"уколоть","stick","stuck","stuck","sticked","sticken","sticket","stuck",false,0,true,0,15);
+      let glagolSting = new Glagol(145,"ужалить","sting","stung","stung","stinged","stingen","stinget","stung",false,0,true,0,15);
+      let glagolStink = new Glagol(146,"вонять","stink","stank (stunk)","stunk","stinked","stinken","stinket","stunk",false,0,true,0,15);
+      let glagolStrew = new Glagol(147,"устлать","strew","strewed","strewn (strewed)","strewed","strewen","strewet","strewn (strewed)",false,0,true,0,15);
+      let glagolStride = new Glagol(148,"шагать","stride","strode","stridden","strided","striden","strident","stridden",false,0,true,0,15);
+      let glagolStrike = new Glagol(149,"ударять","strike","strung","strung","striked","striken","strikent","strung",false,0,true,0,15);
+      let glagolString = new Glagol(150,"натянуть","string","strung","strung","stringed","stringen","stringet","strung",false,0,true,0,15);
+      let glagolStrive = new Glagol(151,"стараться","strive","strove","striven","strived","striven","strivent","striven",false,0,true,0,15);
+      let glagolSwear = new Glagol(152,"поклясться","swear","swore","sworn","sweared","swearen","swearet","sworn",false,0,true,0,15);
+      let glagolSweep = new Glagol(153,"мести","sweep","swept","swept","sweeped","sweepen","sweepet","swept",false,0,true,0,15);
+      let glagolSwell = new Glagol(154,"вздуться","swell","swelled","swollen","swelled","swellen","swellet","swollen",false,0,true,0,15);
+      let glagolSwim = new Glagol(155,"плыть","swim","swam","swum","swimed","swimen","swimet","swum",false,0,true,0,10);
+      let glagolSwing = new Glagol(156,"качаться","swing","swung","swung","swinged","swingen","swinget","swung",false,0,true,0,15);
+      let glagolTake = new Glagol(157,"брать","take","took","taken","taked","taken","takent","taken",false,0,true,0,10);
+      let glagolTeach = new Glagol(158,"учить","teach","taught","taught","teached","teachen","teachet","taught",false,0,true,0,10);
+      let glagolTear = new Glagol(159,"рвать","tear","tore","torn","teared","tearen","tearet","torn",false,0,true,0,15);
+      let glagolTelecast = new Glagol(160,"передвать ТВ","telecast","telecast","telecast","telecasted","telecasten","telecastet","telecastent",false,0,true,0,10);
+      let glagolTell = new Glagol(161,"рассказать","tell","told","told","telled","tellen","tellet","told",false,0,true,0,10);
+      let glagolThink = new Glagol(162,"думать","think","thought","thought","thinked","thinken","thinket","thought",false,0,true,0,10);
+      let glagolThrow = new Glagol(163,"бросить","throw","threw","thrown","throwed","throwen","throwet","thrown",false,0,true,0,10);
+      let glagolThrust = new Glagol(164,"толкнуть","thrust","thrust","thrust","thrusted","thrusten","thrustet","thrustent",false,0,true,0,15);
+      let glagolTread = new Glagol(165,"ступать","tread","trod","trodden","treaded","treaden","treadet","trodden",false,0,true,0,15);
+      let glagolUnbend = new Glagol(166,"разогнуть(ся)","unbend","unbent","unbent","unbended","unbenden","unbendet","unbent",false,0,true,0,15);
+      let glagolUnderstand = new Glagol(167,"понимать","understand","understood","understood","understanded","understanden","understandet","understood",false,0,true,0,10);
+      let glagolUndertake = new Glagol(168,"предпринять","undertake","undertook","undertaken","undertaked","undertaken","undertakent","undertaken",false,0,true,0,15);
+      let glagolUpset = new Glagol(169,"опрокинуть(ся)","upset","upset","upset","upseted","upseten","upsetet","upsetent",false,0,true,0,15);
+      let glagolWake = new Glagol(170,"будить, просыпаться","wake","woke","woken","waked","waken","wakent","woken",false,0,true,0,10);
+      let glagolWear = new Glagol(171,"носить","wear","wore","worn","weared","wearen","wearet","worn",false,0,true,0,10);
+      let glagolWeave = new Glagol(172,"ткать","weave","wove","woven","weaved","weaven","weavent","woven",false,0,true,0,15);
+      let glagolWeep = new Glagol(173,"плакать","weep","wept","wept","weeped","weepen","weepet","wept",false,0,true,0,15);
+      let glagolWet = new Glagol(174,"мочить","wet","wet","wet","weted","weten","wetet","wetent",false,0,true,0,10);
+      let glagolWin = new Glagol(175,"выиграть","win","won","won","wined","winen","winet","won",false,0,true,0,10);
+      let glagolWind = new Glagol(176,"дуть","wind","wound","wound","winded","winden","windet","wound",false,0,true,0,15);
+      let glagolWithdraw = new Glagol(177,"отзывать, взять обратно","withdraw","withdrew","withdrawn","withdrawed","withdrawen","withdrawet","withdrawn",false,0,true,0,10);
+      let glagolWring = new Glagol(178,"сжать, скрутить","wring","wrung","wrung","wringed","wringen","wringet","wrung",false,0,true,0,15);
+      let glagolWrite = new Glagol(179,"писать","write","wrote","written","writed","writen","writent","written",false,0,true,0,10);
+
+      // SET из глаголов ---- не используется
+          //let setOfGlagols = new Set(); 
+          //  setOfGlagols.add(glagolMake);
+          //  setOfGlagols.add(glagolDo);
+      
+      // массив из глаголов 'AOG'
+      let arrayOfGlagols = [glagolAbide,
+        glagolArise,
+        glagolAwake,
+        glagolBe,
+        glagolBear,
+        glagolBeat,
+        glagolBecome,
+        glagolBefall,
+        glagolBegin,
+        glagolBend,
+        glagolBeseech,
+        glagolBid,
+        glagolBind,
+        glagolBite,
+        glagolBleed,
+        glagolBlow,
+        glagolBreak,
+        glagolBreed,
+        glagolBring,
+        glagolBroadcast,
+        glagolBuild,
+        glagolBurn,
+        glagolBurst,
+        glagolBuy,
+        glagolCast,
+        glagolCatch,
+        glagolChoose,
+        glagolCleave,
+        glagolCling,
+        glagolClothe,
+        glagolCome,
+        glagolCost,
+        glagolCreep,
+        glagolCut,
+        glagolDare,
+        glagolDeal,
+        glagolDig,
+        glagolDo,
+        glagolDraw,
+        glagolDream,
+        glagolDrink,
+        glagolDrive,
+        glagolDwell,
+        glagolEat,
+        glagolFall,
+        glagolFeed,
+        glagolFeel,
+        glagolFight,
+        glagolFind,
+        glagolFlee,
+        glagolFling,
+        glagolFly,
+        glagolForbid,
+        glagolForesee,
+        glagolForget,
+        glagolForgive,
+        glagolFreeze,
+        glagolGet,
+        glagolGild,
+        glagolGive,
+        glagolGo,
+        glagolGrind,
+        glagolGrow,
+        glagolHang,
+        glagolHave,
+        glagolHear,
+        glagolHew,
+        glagolHide,
+        glagolHit,
+        glagolHold,
+        glagolHurt,
+        glagolInput,
+        glagolKeep,
+        glagolKneel,
+        glagolKnit,
+        glagolKnow,
+        glagolLay,
+        glagolLead,
+        glagolLean,
+        glagolLeap,
+        glagolLearn,
+        glagolLeave,
+        glagolLend,
+        glagolLet,
+        glagolLie,
+        glagolLight,
+        glagolLose,
+        glagolMake,
+        glagolMean,
+        glagolMeet,
+        glagolMishear,
+        glagolMislead,
+        glagolMistake,
+        glagolMow,
+        glagolOffset,
+        glagolOvertake,
+        glagolPay,
+        glagolProve,
+        glagolPut,
+        glagolRead,
+        glagolRebuild,
+        glagolRide,
+        glagolRing,
+        glagolRise,
+        glagolRun,
+        glagolSaw,
+        glagolSay,
+        glagolSee,
+        glagolSeek,
+        glagolSell,
+        glagolSend,
+        glagolSet,
+        glagolSew,
+        glagolShake,
+        glagolShave,
+        glagolShear,
+        glagolShed,
+        glagolShine,
+        glagolShoe,
+        glagolShoot,
+        glagolShow,
+        glagolShrink,
+        glagolShut,
+        glagolSing,
+        glagolSink,
+        glagolSit,
+        glagolSleep,
+        glagolSlide,
+        glagolSmell,
+        glagolSow,
+        glagolSpeak,
+        glagolSpeed,
+        glagolSpell,
+        glagolSpend,
+        glagolSpill,
+        glagolSpin,
+        glagolSpit,
+        glagolSplit,
+        glagolSpoil,
+        glagolSpread,
+        glagolSpring,
+        glagolStand,
+        glagolSteal,
+        glagolStick,
+        glagolSting,
+        glagolStink,
+        glagolStrew,
+        glagolStride,
+        glagolStrike,
+        glagolString,
+        glagolStrive,
+        glagolSwear,
+        glagolSweep,
+        glagolSwell,
+        glagolSwim,
+        glagolSwing,
+        glagolTake,
+        glagolTeach,
+        glagolTear,
+        glagolTelecast,
+        glagolTell,
+        glagolThink,
+        glagolThrow,
+        glagolThrust,
+        glagolTread,
+        glagolUnbend,
+        glagolUnderstand,
+        glagolUndertake,
+        glagolUpset,
+        glagolWake,
+        glagolWear,
+        glagolWeave,
+        glagolWeep,
+        glagolWet,
+        glagolWin,
+        glagolWind,
+        glagolWithdraw,
+        glagolWring,
+        glagolWrite
+        ];
+      
+      let iAOG = 0;
+      let currentLevel = 105;
+      let mainArrayOfRndIndexes = randomArray(0, arrayOfGlagols.length); //список случаных индексов для глаголов
+      let mainArrayOfRndIndexesL = leveledArray(mainArrayOfRndIndexes);
+      let arRnd = randomArray(1, 6); // массив 6 случайных индексов
+      let currGlagol = arrayOfGlagols[mainArrayOfRndIndexesL[iAOG]]; // текуший глагол для 6из1
+      let arTab = arrForTable6of1(currGlagol, arRnd); // массив 6 случайных форм глаголов
+      let correctForm  = currGlagol.form2;
+      let end6of1 = 0;         // конец списка 6из1
+      let countTry6of1 = 0;    //счетчик ответов 6из1
+      let countRight6of1 = 0;  //счетчик правильных ответов 6из1
+      let percentRight6of1 = 0;//доля правильных ответов 6из1
+
+
+      //Innering6of1(); 
+      nextGlagol(iAOG);
+
+//document.getElementById("pp").innerHTML = currentLevel;
+
+    </script>
+</body>
+</html>
