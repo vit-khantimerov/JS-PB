@@ -25,7 +25,12 @@ console.log();
 /* Is NULL > or < 0 ? *****************/
 let x = null;
 if (x <= 0 && x >= 0) {
-    console.log("x <= 0 && x >= 0 !!! Серьезно ???");
+  console.log("x <= 0 && x >= 0 !!! Серьезно ???");
 } else {
-    console.log("Что вы там курите?");
+  console.log("Что вы там курите?");
 }
+
+/*************************/
+[0, 1, 2, 3, 4, 5, 6, 7].forEach((element) => {
+  if (element > 5) console.log(element);
+});
