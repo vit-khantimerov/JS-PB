@@ -13,7 +13,6 @@ reverse(arr); // [1,2,3]
 ```
 */
 
-<<<<<<< HEAD
 // Решение
 
 function reverse(a) {
@@ -228,4 +227,3 @@ try {
 // tryFunc(reverse('o'));
 // tryFunc(reverse([]));
 // tryFunc(reverse(a));
->>>>>>> 4aba8e3ed3ad97ce20e979adf35cfab645058b12
