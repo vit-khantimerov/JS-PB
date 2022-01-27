@@ -18,13 +18,13 @@ forEach(arr, function(item, i, arr) {});
 
 function forEach(arr, f) {
   if (!Array.isArray(arr)) {
-    throw new Error("Error: parameter 1 type should be an array");
+    throw new Error("parameter 1 type should be an array");
   }
   if (arr.length === 0) {
     throw new Error("array can't be an empty");
   }
   if (typeof f !== "function") {
-    throw new Error("Error: parameter 2 type should be a function");
+    throw new Error("parameter 2 type should be a function");
   }
   for (let i = 0; i < arr.length; i++) {
     f(arr[i], i, arr);
@@ -43,11 +43,13 @@ function f2(item, i, arr) {
   console.log(item * 2);
 }
 
-let aaa = [1, 2, 3, 4, 5];
-console.log("forEach(aaa, clg) >>");
-forEach(aaa, clg);
+const arr = [1, 2, 3];
+
+console.log("forEach(arr, clg) >>");
+forEach(arr, clg);
 console.log();
 
+let aaa = [1, 2, 3, 4, 5];
 console.log("forEach(aaa, f2) >>");
 forEach(aaa, f2);
 console.log();
@@ -94,15 +96,13 @@ try {
 }
 console.log();
 
-
 /*****  Результат *****
 
-forEach(aaa, clg) >>
-item = 1, i = 0, arr = 1,2,3,4,5
-item = 2, i = 1, arr = 1,2,3,4,5
-item = 3, i = 2, arr = 1,2,3,4,5
-item = 4, i = 3, arr = 1,2,3,4,5
-item = 5, i = 4, arr = 1,2,3,4,5
+[Running] node "c:\HTML+\JS PB\Lesson 4\taks 4 - 1.js"
+forEach(arr, clg) >>
+item = 1, i = 0, arr = 1,2,3
+item = 2, i = 1, arr = 1,2,3
+item = 3, i = 2, arr = 1,2,3
 
 forEach(aaa, f2) >>
 2
@@ -130,11 +130,11 @@ forEach([], f2) >>
 Error: array can't be an empty
 
 forEach(0, clg) >>
-Error: Error: parameter 1 type should be an array
+Error: parameter 1 type should be an array
 
 forEach([0, 1], 'f') >>
-Error: Error: parameter 2 type should be a function
+Error: parameter 2 type should be a function
 
 
-[Done] exited with code=0 in 0.35 seconds
+[Done] exited with code=0 in 0.389 seconds
 */

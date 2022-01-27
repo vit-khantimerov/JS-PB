@@ -94,6 +94,7 @@ try {
 
 /*****  Результат  *****
 
+[Running] node "c:\HTML+\JS PB\Lesson 4\taks 4 - 10.js"
 reverse( [ 3, 2, 1 ] ) >>  [ 1, 2, 3 ]
 reverse( [ 1, 2, 3, 4, 5, 6, 7 ] ) >>  [ 7, 6, 5, 4, 3, 2, 1 ]
 reverse( [ 0 ] ) >>  [ 0 ]
@@ -103,5 +104,5 @@ reverse(0) >> Error: parameter type should be an array
 reverse(s) >> Error: parameter type should be an array
 reverse([object Object]) >> Error: parameter type should be an array
 
-[Done] exited with code=0 in 0.355 seconds
+[Done] exited with code=0 in 0.348 seconds
 */
