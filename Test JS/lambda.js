@@ -18,7 +18,7 @@ let sum = (a, b) => a + b; //  f(a,b){a+b}
 console.log(sum(100, 11)); // 111
 
 /************************/
-let cube = (a) => a ** 3;
+let cube = a => a ** 3;  // = (a) => a ** 3;
 console.log(cube(3)); // 27
 
 /************************/
