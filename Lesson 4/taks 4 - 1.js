@@ -31,6 +31,8 @@ function forEach(arr, f) {
   }
 }
 
+/*************************/
+
 function clg(item, i, arr) {
   console.log(`item = ${item}, i = ${i}, arr = ${arr}`);
 }
@@ -42,6 +44,8 @@ function f(item, i, arr) {
 function f2(item, i, arr) {
   console.log(item * 2);
 }
+
+/*************************/
 
 const arr = [1, 2, 3];
 

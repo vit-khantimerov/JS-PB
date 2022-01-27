@@ -37,6 +37,8 @@ function filter(arr, f) {
   console.log(arrFilter);
 }
 
+/*************************/
+
 function positive(item) {
   if (item > 0) {
     return item;
@@ -48,6 +50,8 @@ function even(item) {
     return item;
   }
 }
+
+/*************************/
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log("filter(arr, even) >>");
