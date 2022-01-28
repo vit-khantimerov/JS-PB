@@ -27,49 +27,62 @@ f(arr5); // 3
 
 // Решение
 
+const RED = "\x1B[31;1m"; // цвет шрифта в консоли
+const RESET = "\x1b[0m"; // сброс цета
 
-
-let f = function(arr) {
-    if (!Array.isArray(arr)) {
-        throw new Error('parameter type should be an array')
+let f = function (arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error(RED + "Error: parameter type should be an array" + RESET);
+  }
+  return arr.reduce((acc, item) => {
+    if (Array.isArray(item)) {
+      return acc + f(item);
+    } else {
+      if (typeof item !== "number") {
+        throw new Error(RED + "Error: element should be a number" + RESET);
+      }
+      return acc + item;
     }
-    return arr.reduce((acc, item) => {
-        if (Array.isArray(item)) {
-            return acc + f(item)
-        } else {
-            if (typeof(item) !== 'number') {
-                throw new Error('element should be a number')
-            }
-            return acc + item
-        }
-    },0)
-}
-
+  }, 0);
+};
 
 const arr = [[[1, 2], [1, 2]], [[2, 1], [1, 2]]];
 console.log(f(arr)); // 12
-const arr2 = [[[[[1,2]]]]];
+const arr2 = [[[[[1, 2]]]]];
 console.log(f(arr2)); // 3
-const arr3 = [[[[[1,2]]],2],1];
+const arr3 = [[[[[1, 2]]], 2], 1];
 console.log(f(arr3)); // 6
 const arr4 = [[[[[]]]]];
 console.log(f(arr4)); // 0
-const arr5 = [[[[[],3]]]];
+const arr5 = [[[[[], 3]]]];
 console.log(f(arr5)); // 3
 
-console.log(f([1,2,3,'n',4])); // error
-console.log(f([[[[[],3]],'n']])); // error
-console.log(f(1,0,10)); // error
+try {
+  console.log(f([1, 2, 3, "n", 4])); // error
+} catch (error) {
+  console.log(error.message);
+}
 
+try {
+  console.log(f([[[[[], 3]], "n"]])); // error
+} catch (error) {
+  console.log(error.message);
+}
 
-
+try {
+  console.log(f(1, 0, 10)); // error
+} catch (error) {
+  console.log(error.message);
+}
 
 /*****  Результат  *****
-
-
-
-
-
-
-
-*/ 
+PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Drafts\less 4\task 4 - 8 draft.js"
+12
+3
+6
+0
+3
+Error: element should be a number       
+Error: element should be a number       
+Error: parameter type should be an array
+*/
