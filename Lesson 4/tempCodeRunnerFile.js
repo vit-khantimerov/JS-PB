@@ -1,1 +1,1 @@
-console.clear;
+console.log(RED + "a" + "a" + "c" + RESET);

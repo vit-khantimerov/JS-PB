@@ -146,3 +146,5 @@ Error: parameter 2 type should be a function
 
 [Done] exited with code=0 in 0.389 seconds
 */
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array
