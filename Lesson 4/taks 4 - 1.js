@@ -1,13 +1,9 @@
 /* Урок 4. Задача 1
-
 Создать имплементацию функции `forEach`, 
     логика работы такая же как и у родного метода.
-
 Функция должна содержать проверки:
-
 - Первый параметр обязателен и может принимать только массив
 - Второй параметр обязателен и может принимать только функцию
-
 ```javascript
 const arr = [1,2,3];
 forEach(arr, function(item, i, arr) {});
@@ -105,46 +101,36 @@ try {
 console.log();
 
 /*****  Результат *****
-
 [Running] node "c:\HTML+\JS PB\Lesson 4\taks 4 - 1.js"
 forEach(arr, clg) >>
 item = 1, i = 0, arr = 1,2,3
 item = 2, i = 1, arr = 1,2,3
 item = 3, i = 2, arr = 1,2,3
-
 forEach(aaa, f2) >>
 2
 4
 6
 8
 10
-
 forEach([1, 2, 3, "s"], function f4(item, i, arr) ... ('[',item,']', i ** 2,',', arr) >>
 [ 1 ], 0 , [ 1, 2, 3, 's' ]
 [ 2 ], 1 , [ 1, 2, 3, 's' ]
 [ 3 ], 4 , [ 1, 2, 3, 's' ]
 [ s ], 9 , [ 1, 2, 3, 's' ]
-
 forEach([1, 2, 3, "s"], (item, i, arr) => console.log(item * 10, i * 10, arr)) >>
 10 0 [ 1, 2, 3, 's' ]
 20 10 [ 1, 2, 3, 's' ]
 30 20 [ 1, 2, 3, 's' ]
 NaN 30 [ 1, 2, 3, 's' ]
-
 forEach([0], clg) >>
 item = 0, i = 0, arr = 0
-
 forEach([], f2) >>
 Error: array can't be an empty
-
 forEach(0, clg) >>
 Error: parameter 1 type should be an array
-
 forEach([0, 1], 'f') >>
 Error: parameter 2 type should be a function
-
-
 [Done] exited with code=0 in 0.389 seconds
 */
 
-https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array
+//https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array
