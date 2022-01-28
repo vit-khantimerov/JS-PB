@@ -15,16 +15,20 @@ filter(arr, function(item, i, arr) {});
 */
 
 // Решение
+const RED = "\x1B[31m"; // цвет шрифта в консоли
+const RESET = "\x1b[0m"; // сброс цета
 
 function filter(arr, f) {
   if (!Array.isArray(arr)) {
-    throw new Error("parameter 1 type should be an array");
+    throw new Error(RED + "Error: parameter 1 type should be an array" + RESET);
   }
   if (arr.length === 0) {
-    throw new Error("array can't be an empty");
+    throw new Error(RED + "Error: array can't be an empty" + RESET);
   }
   if (typeof f !== "function") {
-    throw new Error("parameter 2 type should be a function");
+    throw new Error(
+      RED + "Error: parameter 2 type should be a function" + RESET
+    );
   }
 
   let arrFilter = new Array();
@@ -75,7 +79,7 @@ console.log("filter(0, even) >>");
 try {
   filter(0, even);
 } catch (e) {
-  console.log("Error:", e.message);
+  console.log(e.message);
 }
 console.log();
 
@@ -83,7 +87,7 @@ console.log("filter([], even) >>");
 try {
   filter([], even);
 } catch (e) {
-  console.log("Error:", e.message);
+  console.log(e.message);
 }
 console.log();
 
@@ -91,7 +95,7 @@ console.log("filter([], even) >>");
 try {
   filter(arr, "f");
 } catch (e) {
-  console.log("Error:", e.message);
+  console.log(e.message);
 }
 console.log();
 

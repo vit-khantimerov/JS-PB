@@ -14,11 +14,13 @@ reverse(arr); // [1,2,3]
 */
 
 // Решение
+const RED = "\x1B[31m"; // цвет шрифта в консоли
+const RESET = "\x1b[0m"; // сброс цета
 
 function reverse(a) {
   if (Array.isArray(a)) {
     if (a.length === 0) {
-      throw new Error(`reverse([${a}]) >> Error: parameter can't be an empty`);
+      throw new Error(`${RED}reverse([${a}]) >> Error: parameter can't be an empty${RESET}`);
     }
     let tmp = new Array();
     let a0 = a;
@@ -30,7 +32,7 @@ function reverse(a) {
     return a;
   } else {
     throw new Error(
-      `reverse(${a}) >> Error: parameter type should be an array`
+      `${RED}reverse(${a}) >> Error: parameter type should be an array${RESET}`
     );
   }
 }

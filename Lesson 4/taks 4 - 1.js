@@ -15,16 +15,20 @@ forEach(arr, function(item, i, arr) {});
 */
 
 // Решение
+const RED = "\x1B[31m"; // цвет шрифта в консоли
+const RESET = "\x1b[0m"; // сброс цета
 
 function forEach(arr, f) {
   if (!Array.isArray(arr)) {
-    throw new Error("parameter 1 type should be an array");
+    throw new Error(RED + "Error: parameter 1 type should be an array" + RESET);
   }
   if (arr.length === 0) {
-    throw new Error("array can't be an empty");
+    throw new Error(RED + "Error: array can't be an empty" + RESET);
   }
   if (typeof f !== "function") {
-    throw new Error("parameter 2 type should be a function");
+    throw new Error(
+      RED + "Error: parameter 2 type should be a function" + RESET
+    );
   }
   for (let i = 0; i < arr.length; i++) {
     f(arr[i], i, arr);
@@ -80,7 +84,7 @@ console.log("forEach([], f2) >>");
 try {
   forEach([], f2);
 } catch (e) {
-  console.log("Error:", e.message);
+  console.log(e.message);
 }
 console.log();
 
@@ -88,7 +92,7 @@ console.log("forEach(0, clg) >>");
 try {
   forEach(0, clg);
 } catch (e) {
-  console.log("Error:", e.message);
+  console.log(e.message);
 }
 console.log();
 
@@ -96,7 +100,7 @@ console.log("forEach([0, 1], 'f') >>");
 try {
   forEach([0, 1], "f");
 } catch (e) {
-  console.log("Error:", e.message);
+  console.log(e.message);
 }
 console.log();
 
