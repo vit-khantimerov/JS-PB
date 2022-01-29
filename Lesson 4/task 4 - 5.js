@@ -54,8 +54,8 @@ console.log(arr, ">> reduce(arr, f, acc) >>");
 reduce(arr, f, acc);
 console.log();
 
-console.log('reduce([", ", "W", "o", "r", "l", "d", "!"], f, "Hello") >>');
-reduce([", ", "W", "o", "r", "l", "d", "!"], f, "Hello");
+console.log('reduce(["W", "o", "r", "l", "d"], f, "Hello ") >>');
+reduce(["W", "o", "r", "l", "d"], f, "Hello ");
 console.log();
 
 console.log('reduce([], f, "Empty array") >>');
@@ -70,7 +70,7 @@ try {
 }
 console.log();
 
-console.log(arr, "reduce(arr, 0, 0) >>");
+console.log(arr, ">> reduce(arr, 0, 0) >>");
 try {
   reduce(arr, 0, 0);
 } catch (e) {
@@ -78,7 +78,7 @@ try {
 }
 console.log();
 
-console.log(arr, "reduce(arr, f, f) >>");
+console.log(arr, ">> reduce(arr, f, f) >>");
 try {
   reduce(arr, f, f);
 } catch (e) {
@@ -92,8 +92,8 @@ PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 5.js"
 [ 1, 2, 3 ] >> reduce(arr, f, acc) >>
 6
 
-reduce([", ", "W", "o", "r", "l", "d", "!"], f, "Hello") >>
-Hello, World!
+reduce(["W", "o", "r", "l", "d"], f, "Hello ") >>   
+Hello World
 
 reduce([], f, "Empty array") >>
 Empty array
@@ -101,10 +101,9 @@ Empty array
 reduce(0, f, 0) >>
 Error: parameter 1 type should be an array
 
-[ 1, 2, 3 ] reduce(arr, 0, 0) >>
-Error: parameter 2 type should be a function
+[ 1, 2, 3 ] >> reduce(arr, 0, 0) >>
+Error: parameter 2 type should be a function        
 
-[ 1, 2, 3 ] reduce(arr, f, f) >>
-Error: parameter 3 type should be a number or string 
-
+[ 1, 2, 3 ] >> reduce(arr, f, f) >>
+Error: parameter 3 type should be a number or string
 */
