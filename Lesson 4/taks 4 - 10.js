@@ -17,6 +17,7 @@ reverse(arr); // [1,2,3]
 const RED = "\x1B[31m"; // цвет шрифта в консоли
 const RESET = "\x1b[0m"; // сброс цета
 const N = "\n";
+console.log();
 
 function reverse(a) {
   if (Array.isArray(a)) {

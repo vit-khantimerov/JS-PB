@@ -14,6 +14,7 @@ forEach(arr, function(item, i, arr) {});
 const RED = "\x1B[31m"; // цвет шрифта в консоли
 const RESET = "\x1b[0m"; // сброс цета
 const N = "\n"; // переход на новую строку
+console.log();
 
 function forEach(arr, f) {
   if (!Array.isArray(arr)) {

@@ -20,6 +20,7 @@ reduce(arr, function(acc, item, i, arr) {}, acc);
 const RED = "\x1B[31m";
 const RESET = "\x1b[0m";
 const N = "\n";
+console.log();
 
 function reduce(arr, f, acc) {
   if (!Array.isArray(arr)) {

@@ -17,6 +17,7 @@ every(arr, function(item, i, arr) {});
 const RED = "\x1B[31m"; // цвет шрифта в консоли
 const RESET = "\x1b[0m"; // сброс цета
 const N = "\n";
+console.log();
 
 function every(arr, f) {
   if (!Array.isArray(arr)) {

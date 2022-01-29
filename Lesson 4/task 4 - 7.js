@@ -30,6 +30,7 @@ console.log( arrLength ); // 4,5,2,3
 const RED = "\x1B[31m";
 const RESET = "\x1b[0m";
 const N = "\n";
+console.log();
 
 /*************************/
 function f(item, i, arr) {
