@@ -50,80 +50,57 @@ let f = function (arr) {
   }, 0);
 };
 
-const arr = [
-  [
-    [1, 2],
-    [1, 2],
-  ],
-  [
-    [2, 1],
-    [1, 2],
-  ],
+/*************************/
+const arr = [[[1, 2], [1, 2]], [[2, 1], [1, 2]]];
+
+let arrTry = [
+  arr, // 12
+  [[[1, 2], [1, 2]], [[2, 1], [1, 2]]], // 12
+  [[[[[1, 2]]]]], // 3
+  [[[[[1, 2]]], 2], 1], // 6
+  [[[[[]]]]], // 0
+  [[[[[], 3]]]], // 3
+  [[[[[], 3]], "n"]], // Error: element should be a number
+  [[[[[], 3]], "n"]], // Error: element should be a number
+  "1, 0, 10", // Error: parameter type should be an array
 ];
-console.log(arr, ">> f(arr) >>");
-console.log(f(arr), N); // 12
 
-const arr2 = [[[[[1, 2]]]]];
-console.log(arr2, ">> f(arr) >>");
-console.log(f(arr2), N); // 3
-
-const arr3 = [[[[[1, 2]]], 2], 1];
-console.log(arr3, ">> f(arr) >>");
-console.log(f(arr3), N); // 6
-
-const arr4 = [[[[[]]]]];
-console.log(arr4, ">> f(arr) >>");
-console.log(f(arr4), N); // 0
-
-const arr5 = [[[[[], 3]]]];
-console.log(arr5, ">> f(arr) >>");
-console.log(f(arr5), N); // 3
-
-console.log('f([1, 2, 3, "n", 4]) >>');
-try {
-  console.log(f([1, 2, 3, "n", 4]), N); // Error: element should be a number
-} catch (error) {
-  console.log(error.message);
-}
-
-console.log('f([[[[[], 3]], "n"]]) >>');
-try {
-  console.log(f([[[[[], 3]], "n"]]), N); // Error: element should be a number
-} catch (error) {
-  console.log(error.message);
-}
-
-console.log("f(1, 0, 10) >>");
-try {
-  console.log(f(1, 0, 10), N); // Error: parameter type should be an array
-} catch (error) {
-  console.log(error.message);
+for (let i in arrTry) {
+  try {
+    console.log("f (", arrTry[i], ") >>");
+    console.log(f(arrTry[i]), N);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 /*****  Результат  *****
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Drafts\less 4\task 4 - 8 draft.js"
 
-[ [ [ 1, 2 ], [ 1, 2 ] ], [ [ 2, 1 ], [ 1, 2 ] ] ] >> f(arr) >>
+f ( [ [ [ 1, 2 ], [ 1, 2 ] ], [ [ 2, 1 ], [ 1, 2 ] ] ] ) >>
 12
 
-[ [ [ [Array] ] ] ] >> f(arr) >>
+f ( [ [ [ 1, 2 ], [ 1, 2 ] ], [ [ 2, 1 ], [ 1, 2 ] ] ] ) >>
+12
+
+f ( [ [ [ [Array] ] ] ] ) >>
 3
 
-[ [ [ [Array] ], 2 ], 1 ] >> f(arr) >>
+f ( [ [ [ [Array] ], 2 ], 1 ] ) >>
 6
 
-[ [ [ [Array] ] ] ] >> f(arr) >>
+f ( [ [ [ [Array] ] ] ] ) >>
 0
 
-[ [ [ [Array] ] ] ] >> f(arr) >>
+f ( [ [ [ [Array] ] ] ] ) >>
 3
 
-f([1, 2, 3, "n", 4]) >>
+f ( [ [ [ [Array] ], 'n' ] ] ) >>
 Error: element should be a number
 
-f([[[[[], 3]], "n"]]) >>
+f ( [ [ [ [Array] ], 'n' ] ] ) >>
 Error: element should be a number
 
-f(1, 0, 10) >>
+f ( 1, 0, 10 ) >>
 Error: parameter type should be an array
 */
