@@ -1,6 +1,6 @@
 console.log("---for---");
-let a = [1, 2, 3];
-a[10] = 10;
+let a = [1, 2, , , 5];
+// a[10] = 10;
 for (let i = 0; i < a.length; i++) {
   console.log(a[i]);
 }
