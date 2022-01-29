@@ -84,6 +84,9 @@ for (let i in arrTry) {
     console.log();
   } catch (error) {
     console.log(error.message, N);
+    if (typeof ff != "function") {
+      break;
+    }
   }
 }
 
@@ -99,6 +102,9 @@ for (let i in arrTry) {
     console.log();
   } catch (error) {
     console.log(error.message, N);
+    if (typeof ff != "function") {
+      break;
+    }
   }
 }
 
@@ -114,7 +120,9 @@ for (let i in arrTry) {
     console.log();
   } catch (error) {
     console.log(error.message, N);
-    break;
+    if (typeof ff != "function") {
+      break;
+    }
   }
 }
 
