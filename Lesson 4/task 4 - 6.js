@@ -18,25 +18,28 @@ reduceRight(arr, function(acc, item, i, arr) {}, acc);
 // Решение
 const RED = "\x1B[31m";
 const RESET = "\x1b[0m";
+const N = "\n";
 
 function reduceRight(arr, f, acc) {
   if (!Array.isArray(arr)) {
-    throw new Error(RED + "Error: parameter 1 type should be an array" + RESET);
+    throw new Error(
+      RED + "Error: parameter 1 type should be an array" + RESET + N
+    );
   }
   if (typeof f !== "function") {
     throw new Error(
-      RED + "Error: parameter 2 type should be a function" + RESET
+      RED + "Error: parameter 2 type should be a function" + RESET + N
     );
   }
   if (typeof acc !== "string" && typeof acc !== "number") {
     throw new Error(
-      RED + "Error: parameter 3 type should be a number or string" + RESET
+      RED + "Error: parameter 3 type should be a number or string" + RESET + N
     );
   }
   for (let i in arr) {
     acc = f(acc, arr[arr.length - i - 1], i, arr);
   }
-  console.log(acc);
+  console.log(acc, N);
   return acc;
 }
 
@@ -50,40 +53,34 @@ const arr = [1, 2, 3];
 const acc = 0;
 
 console.log(arr, ">> reduceRight(arr, f, acc) >>");
-reduceRight(arr, fRight, acc);
-console.log();
+reduceRight(arr, fRight, acc); // 6
 
 console.log('reduceRight(["W", "o", "r", "l", "d"], f, "Hello ") >>');
-reduceRight(["W", "o", "r", "l", "d"], fRight, "Hello ");
-console.log();
+reduceRight(["W", "o", "r", "l", "d"], fRight, "Hello "); // Hello dlroW
 
 console.log('reduceRight([], f, "Empty array") >>');
-reduceRight([], fRight, "Empty array");
-console.log();
+reduceRight([], fRight, "Empty array"); // Empty array
 
-console.log("reduceRight(0, f, 0) >>");
+console.log("reduceRight(0, Right, 0) >>");
 try {
   reduceRight(0, fRight, 0);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message); // Error: parameter 1 type should be an array
 }
-console.log();
 
 console.log(arr, ">> reduceRight(arr, 0, 0) >>");
 try {
   reduceRight(arr, 0, 0);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message); // Error: parameter 2 type should be a function
 }
-console.log();
 
 console.log(arr, ">> reduceRight(arr, f, f) >>");
 try {
   reduceRight(arr, fRight, fRight);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message); // Error: parameter 3 type should be a number or strin
 }
-console.log();
 
 /*****  Результат  *****
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 6.js"
@@ -97,12 +94,12 @@ Hello dlroW
 reduceRight([], f, "Empty array") >>
 Empty array
 
-reduceRight(0, f, 0) >>
+reduceRight(0, Right, 0) >>
 Error: parameter 1 type should be an array
 
 [ 1, 2, 3 ] >> reduceRight(arr, 0, 0) >>
 Error: parameter 2 type should be a function
 
 [ 1, 2, 3 ] >> reduceRight(arr, f, f) >>
-Error: parameter 3 type should be a number or string  
+Error: parameter 3 type should be a number or string 
 */

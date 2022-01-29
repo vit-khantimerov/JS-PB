@@ -16,6 +16,7 @@ every(arr, function(item, i, arr) {});
 // Решение
 const RED = "\x1B[31m"; // цвет шрифта в консоли
 const RESET = "\x1b[0m"; // сброс цета
+const N = "\n";
 
 function every(arr, f) {
   if (!Array.isArray(arr)) {
@@ -46,47 +47,47 @@ function positive(item, i, arr) {
 const arr = [1, 2, 3];
 console.log(arr, ">> every(arr, positive) >>");
 try {
-  every(arr, positive);
+  every(arr, positive); // true
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message, N);
 }
 console.log();
 
 let arr2 = [-1];
 console.log(arr2, ">> every(arr, positive) >>");
 try {
-  every(arr2, positive);
+  every(arr2, positive); // false
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message, N);
 }
 console.log();
 
 let arr3 = [];
 console.log(arr3, ">> every(arr, positive); >>");
 try {
-  every(arr3, positive);
+  every(arr3, positive); // true
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message, N);
 }
 console.log();
 
 console.log("every([2, 4, 6], (item) => {return item % 2 === 0}); >>");
 try {
   every([2, 4, 6], (item) => {
-    return item % 2 === 0;
+    return item % 2 === 0;      // true
   });
 } catch (error) {
-  console.log(e.message);
+  console.log(e.message, N);
 }
 console.log();
 
 console.log("every([1, 2, 4, 6], (item) => {return item % 2 === 0;}); >>");
 try {
   every([1, 2, 4, 6], (item) => {
-    return item % 2 === 0;
+    return item % 2 === 0;         // false
   });
 } catch (error) {
-  console.log(e.message);
+  console.log(e.message, N);
 }
 console.log();
 
@@ -95,10 +96,10 @@ console.log(
 );
 try {
   every(["aaa", "bbbb", "ccc"], (item) => {
-    return item.length > 2;
+    return item.length > 2;   // true
   });
 } catch (error) {
-  console.log(e.message);
+  console.log(e.message, N);
 }
 console.log();
 
@@ -106,20 +107,19 @@ console.log("every(0, positive) >>");
 try {
   every(0, positive);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message, N); // // Error: parameter 1 type should be an array
 }
-console.log();
 
 console.log("every([1,2], 0) >>");
 try {
   every([1, 2], 0);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message, N); // Error: parameter 2 type should be a function
 }
-console.log();
 
 /*****  Результат  *****
-[Running] node "c:\HTML+\JS PB\Lesson 4\task 4 - 3.js"
+PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 3.js"
+
 [ 1, 2, 3 ] >> every(arr, positive) >>
 true
 
@@ -143,8 +143,5 @@ Error: parameter 1 type should be an array
 
 every([1,2], 0) >>
 Error: parameter 2 type should be a function
-
-
-[Done] exited with code=0 in 0.334 seconds
 
 */

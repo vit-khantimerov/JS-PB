@@ -19,19 +19,22 @@ reduce(arr, function(acc, item, i, arr) {}, acc);
 // Решение
 const RED = "\x1B[31m";
 const RESET = "\x1b[0m";
+const N = "\n";
 
 function reduce(arr, f, acc) {
   if (!Array.isArray(arr)) {
-    throw new Error(RED + "Error: parameter 1 type should be an array" + RESET);
+    throw new Error(
+      RED + "Error: parameter 1 type should be an array" + RESET + N
+    );
   }
   if (typeof f !== "function") {
     throw new Error(
-      RED + "Error: parameter 2 type should be a function" + RESET
+      RED + "Error: parameter 2 type should be a function" + RESET + N
     );
   }
   if (typeof acc !== "string" && typeof acc !== "number") {
     throw new Error(
-      RED + "Error: parameter 3 type should be a number or string" + RESET
+      RED + "Error: parameter 3 type should be a number or string" + RESET + N
     );
   }
   for (let i in arr) {
@@ -51,40 +54,37 @@ const arr = [1, 2, 3];
 const acc = 0;
 
 console.log(arr, ">> reduce(arr, f, acc) >>");
-reduce(arr, f, acc);
+reduce(arr, f, acc); //
 console.log();
 
 console.log('reduce(["W", "o", "r", "l", "d"], f, "Hello ") >>');
-reduce(["W", "o", "r", "l", "d"], f, "Hello ");
+reduce(["W", "o", "r", "l", "d"], f, "Hello "); // Hello World
 console.log();
 
 console.log('reduce([], f, "Empty array") >>');
-reduce([], f, "Empty array");
+reduce([], f, "Empty array"); // Empty array
 console.log();
 
 console.log("reduce(0, f, 0) >>");
 try {
   reduce(0, f, 0);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message); // Error: parameter 1 type should be an array
 }
-console.log();
 
 console.log(arr, ">> reduce(arr, 0, 0) >>");
 try {
   reduce(arr, 0, 0);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message); // Error: parameter 2 type should be a function
 }
-console.log();
 
 console.log(arr, ">> reduce(arr, f, f) >>");
 try {
   reduce(arr, f, f);
 } catch (e) {
-  console.log(e.message);
+  console.log(e.message); // Error: parameter 3 type should be a number or string
 }
-console.log();
 
 /*****  Результат  *****
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 5.js"
