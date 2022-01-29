@@ -39,18 +39,22 @@ function f(item, i, arr) {
 
 /*************************/
 var arr = ["abcd", "abcde", "ab", "abc"];
-console.log(arr, ">> 'arr.map(f)' >>");
-console.log(arr.map(f), N); // [ 4, 5, 2, 3 ]
+console.log(arr, ">> 'let arrLength = arr.map(f)' >>");
+let arrLength = arr.map(f);
+console.log(arrLength, N); // [ 4, 5, 2, 3 ]
 
 console.log("[1, 2, 3].map(f) >>");
-console.log([1, 2, 3].map(f), N); // [ undefined, undefined, undefined ]
+arrLength = [1, 2, 3].map(f);
+console.log(arrLength, N); // [ undefined, undefined, undefined ]
 
 console.log("[].map(f) >>");
-console.log([].map(f), N); // []
+arrLength = [].map(f);
+console.log(arrLength, N); // []
 
 console.log('[1, 2, 3].map("f")');
 try {
-  console.log([1, 2, 3].map("f"), N);
+  arrLength = [1, 2, 3].map("f");
+  console.log(arrLength, N);
 } catch (e) {
   console.log(RED, "Error: ", e.message, RESET, N); //  Error:  f is not a function
 }
@@ -58,15 +62,15 @@ try {
 /*****  Результат  *****
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 7.js"
 
-[ 'abcd', 'abcde', 'ab', 'abc' ] >> 'arr.map(f)' >>
+[ 'abcd', 'abcde', 'ab', 'abc' ] >> 'let arrLength = arr.map(f)' >>
 [ 4, 5, 2, 3 ]
 
 [1, 2, 3].map(f) >>
-[ undefined, undefined, undefined ] 
+[ undefined, undefined, undefined ]
 
 [].map(f) >>
 []
 
 [1, 2, 3].map("f")
- Error:  f is not a function        
+ Error:  f is not a function       
 */

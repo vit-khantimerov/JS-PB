@@ -1,9 +1,8 @@
-
-/*************************/
-function f(acc, item, i, arr) {
-  console.log(acc, " ", item);
-  acc += item;
-  return acc;
-}
-
-console.log(f(0, 10));
+ (let i = 0; i < arr.length; i++) {
+//   try {
+//     console.log("arrayFill(", arr[i], ") >> ");
+//     console.log(arrayFill(arr[i][0], arr[i][1]), N);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
