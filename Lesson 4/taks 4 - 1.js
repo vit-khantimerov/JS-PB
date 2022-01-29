@@ -125,6 +125,7 @@ try {
 }
 
 /*****  Результат *****
+ * 
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\taks 4 - 1.js"
 
 forEach(arr, clg) >>

@@ -39,7 +39,7 @@ function arrayFill(val, n) {
   }
   if (typeof n !== "number") {
     throw new Error(
-      RED + "Error: secons parameter type should be a number" + RESET + N
+      RED + "Error: second parameter type should be a number" + RESET + N
     );
   }
 
@@ -67,13 +67,13 @@ let arr = [
   [{ name: "Vit", age: 49 }, 2], // [ { name: 'Vit', age: 49 }, { name: 'Vit', age: 49 } ]
   [Infinity, 3], //             [ Infinity, Infinity, Infinity ]
   [null, 3], //                 [ null, null, null ]
-  [1000n, 3], //                Error: first parameter should be a nunber or string or objact or at or array
-  [100, "3"], //                Error: secons parameter type should be a number
-  [, 3], //                     Error: first parameter should be a nunber or string or objact or at or array
-  [undefined, 5], //            Error: first parameter should be a nunber or string or objact or at or array
-  ["set"], //                   Error: secons parameter type should be a number
+  [1000n, 3], //                Error: first parameter should be a nunber or string or objact or array
+  [100, "3"], //                Error: second parameter type should be a number
+  [, 3], //                     Error: first parameter should be a nunber or string or objact or array
+  [undefined, 5], //            Error: first parameter should be a nunber or string or objact or array
+  ["set"], //                   Error: second parameter type should be a number
   ["", 5], //                   [ '', '', '', '', '' ]
-  [1, 10n], //                  Error: secons parameter type should be a number
+  [1, 10n], //                  Error: second parameter type should be a number
   [1, Infinity], //             Error: expect Fatal JavaScript invalid size error
 ];
 
@@ -113,7 +113,7 @@ arrayFill( [ 1000n, 3 ] ) >>
 Error: first parameter should be a nunber or string or objact or array
 
 arrayFill( [ 100, '3' ] ) >>
-Error: secons parameter type should be a number
+Error: second parameter type should be a number
 
 arrayFill( [ <1 empty item>, 3 ] ) >>
 Error: first parameter should be a nunber or string or objact or array
@@ -122,13 +122,13 @@ arrayFill( [ undefined, 5 ] ) >>
 Error: first parameter should be a nunber or string or objact or array
 
 arrayFill( [ 'set' ] ) >>
-Error: secons parameter type should be a number
+Error: second parameter type should be a number
 
 arrayFill( [ '', 5 ] ) >>
 [ '', '', '', '', '' ]
 
 arrayFill( [ 1, 10n ] ) >>
-Error: secons parameter type should be a number
+Error: second parameter type should be a number
 
 arrayFill( [ 1, Infinity ] ) >>
 Error: expect Fatal JavaScript invalid size error

@@ -59,64 +59,111 @@ function even(item) {
 
 /*************************/
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(arr, ">> filter(arr, even) >>");
-filter(arr, even); // [ 2, 4, 6, 8, 10 ]
+const arr = [1, 2, 3];
+filter(arr, even); // [2]
 console.log();
 
-var a = [1, -1, 2, -2, 3, 10];
-console.log(a, ">> filter(a, positive) >>");
-filter(a, positive); // [ 1, 2, 3, 10 ]
-console.log();
+let arrTry = [
+  arr,
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10n],
+  [1, -1, 2, -2, 3, 10],
+  [0, 1, 2, 3, 4, 5],
+  0,
+  [],
+];
 
-console.log("filter([0,1,2,3,4,5], item => {if (item % 2 !== 0){.odd.}} >>");
-filter([0, 1, 2, 3, 4, 5], (item) => {
-  if (item % 2 !== 0) {
-    return item; // [ 1, 3, 5 ]
+let ff = positive;
+for (let i in arrTry) {
+  try {
+    if (Array.isArray(arrTry[i])) {
+      console.log(`filter.${ff.name}([${arrTry[i]}]) >>`);
+    } else {
+      console.log(`filter.${ff.name}(${arrTry[i]}) >>`);
+    }
+    filter(arrTry[i], ff);
+    console.log();
+  } catch (error) {
+    console.log(error.message, N);
   }
-});
-console.log();
-
-console.log("filter(0, even) >>");
-try {
-  filter(0, even);
-} catch (e) {
-  console.log(e.message, N); //Error: parameter 1 type should be an array
 }
 
-console.log("filter([], even) >>");
-try {
-  filter([], even);
-} catch (e) {
-  console.log(e.message, N); // Error: array can't be an empty
+ff = even;
+for (let i in arrTry) {
+  try {
+    if (Array.isArray(arrTry[i])) {
+      console.log(`filter.${ff.name}([${arrTry[i]}]) >>`);
+    } else {
+      console.log(`filter.${ff.name}(${arrTry[i]}) >>`);
+    }
+    filter(arrTry[i], ff);
+    console.log();
+  } catch (error) {
+    console.log(error.message, N);
+  }
 }
 
-console.log('filter(arr, "f") >>');
-try {
-  filter(arr, "f");
-} catch (e) {
-  console.log(e.message, N); // Error: parameter 2 type should be a function
+ff = "ff";
+for (let i in arrTry) {
+  try {
+    if (Array.isArray(arrTry[i])) {
+      console.log(`filter.${ff.name}([${arrTry[i]}]) >>`);
+    } else {
+      console.log(`filter.${ff.name}(${arrTry[i]}) >>`);
+    }
+    filter(arrTry[i], ff);
+    console.log();
+  } catch (error) {
+    console.log(error.message, N);
+    break;
+  }
 }
 
 /*****  Результат  *****
+
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 2.js"
 
-[ 1, 2, 3, 4,  5, 6, 7, 8, 9, 10 ] >> filter(arr, even) >>
-[ 2, 4, 6, 8, 10 ]
+[ 2 ]
 
-[ 1, -1, 2, -2, 3, 10 ] >> filter(a, positive) >>
+filter.positive([1,2,3]) >>
+[ 1, 2, 3 ]
+
+filter.positive([1,2,3,4,5,6,7,8,9,10]) >>
+[
+  1, 2, 3, 4,   5,
+  6, 7, 8, 9, 10n
+]
+
+filter.positive([1,-1,2,-2,3,10]) >>
 [ 1, 2, 3, 10 ]
 
-filter([0,1,2,3,4,5], item => {if (item % 2 !== 0){.odd.}} >>
-[ 1, 3, 5 ]
+filter.positive([0,1,2,3,4,5]) >>
+[ 1, 2, 3, 4, 5 ]
 
-filter(0, even) >>
-Error: parameter 1 type should be an array   
+filter.positive(0) >>
+Error: parameter 1 type should be an array
 
-filter([], even) >>
+filter.positive([]) >>
 Error: array can't be an empty
 
-filter(arr, "f") >>
-Error: parameter 2 type should be a function 
+filter.even([1,2,3]) >>
+[ 2 ]
+
+filter.even([1,2,3,4,5,6,7,8,9,10]) >>
+Cannot mix BigInt and other types, use explicit conversions
+
+filter.even([1,-1,2,-2,3,10]) >>
+[ 2, -2, 10 ]
+
+filter.even([0,1,2,3,4,5]) >>
+[ 0, 2, 4 ]
+
+filter.even(0) >>
+Error: parameter 1 type should be an array
+
+filter.even([]) >>
+Error: array can't be an empty
+
+filter.undefined([1,2,3]) >>
+Error: parameter 2 type should be a function
 
 */
