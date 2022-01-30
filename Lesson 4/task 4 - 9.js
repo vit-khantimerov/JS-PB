@@ -74,7 +74,11 @@ let arr = [
   ["set"], //                   Error: second parameter type should be a number
   ["", 5], //                   [ '', '', '', '', '' ]
   [1, 10n], //                  Error: second parameter type should be a number
-  [1, Infinity], //             Error: expect Fatal JavaScript invalid size error
+  [1, Infinity], //             Error: expect Fatal JavaScript invalid size error //
+  ,
+  // Cannot read properties of undefined (reading '0')
+  [undefined, undefined], //    Error: first parameter should be a nunber or string or objact or array
+  "element", //                 Error: second parameter type should be a number
 ];
 
 for (let i in arr) {
@@ -89,9 +93,9 @@ for (let i in arr) {
 /*****  Результат  *****
 PS C:\HTML+\JS PB> node "c:\HTML+\JS PB\Lesson 4\task 4 - 9.js"
 
-[ 'x', 'x', 'x', 'x', 'x' ] 
+[ 'x', 'x', 'x', 'x', 'x' ]
 
-arrayFill( [ 'x', 5 ] ) >>  
+arrayFill( [ 'x', 5 ] ) >>
 [ 'x', 'x', 'x', 'x', 'x' ]
 
 arrayFill( [ 0, 4 ] ) >>
@@ -101,7 +105,7 @@ arrayFill( [ [ 'x', 'y', 'z' ], 3 ] ) >>
 [ [ 'x', 'y', 'z' ], [ 'x', 'y', 'z' ], [ 'x', 'y', 'z' ] ] 
 
 arrayFill( [ { name: 'Vit', age: 49 }, 2 ] ) >>
-[ { name: 'Vit', age: 49 }, { name: 'Vit', age: 49 } ]      
+[ { name: 'Vit', age: 49 }, { name: 'Vit', age: 49 } ]       
 
 arrayFill( [ Infinity, 3 ] ) >>
 [ Infinity, Infinity, Infinity ]
@@ -132,5 +136,11 @@ Error: second parameter type should be a number
 
 arrayFill( [ 1, Infinity ] ) >>
 Error: expect Fatal JavaScript invalid size error
+
+arrayFill( [ undefined, undefined ] ) >>
+Error: first parameter should be a nunber or string or objact or array
+
+arrayFill( element ) >>
+Error: second parameter type should be a number
 
 */
