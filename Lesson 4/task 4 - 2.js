@@ -73,14 +73,14 @@ let arrTry = [
 ];
 
 let ff = positive;
-for (let i in arrTry) {
+for (let i of arrTry) {
   try {
-    if (Array.isArray(arrTry[i])) {
-      console.log(`filter.${ff.name}([${arrTry[i]}]) >>`);
+    if (Array.isArray(i)) {
+      console.log(`filter.${ff.name}([${i}]) >>`);
     } else {
-      console.log(`filter.${ff.name}(${arrTry[i]}) >>`);
+      console.log(`filter.${ff.name}(${i}) >>`);
     }
-    filter(arrTry[i], ff);
+    filter(i, ff);
     console.log();
   } catch (error) {
     console.log(error.message, N);
@@ -91,14 +91,14 @@ for (let i in arrTry) {
 }
 
 ff = even;
-for (let i in arrTry) {
+for (let i of arrTry) {
   try {
-    if (Array.isArray(arrTry[i])) {
-      console.log(`filter.${ff.name}([${arrTry[i]}]) >>`);
+    if (Array.isArray(i)) {
+      console.log(`filter.${ff.name}([${i}]) >>`);
     } else {
-      console.log(`filter.${ff.name}(${arrTry[i]}) >>`);
+      console.log(`filter.${ff.name}(${i}) >>`);
     }
-    filter(arrTry[i], ff);
+    filter(i, ff);
     console.log();
   } catch (error) {
     console.log(error.message, N);
@@ -109,14 +109,14 @@ for (let i in arrTry) {
 }
 
 ff = "ff";
-for (let i in arrTry) {
+for (let i of arrTry) {
   try {
-    if (Array.isArray(arrTry[i])) {
-      console.log(`filter.${ff.name}([${arrTry[i]}]) >>`);
+    if (Array.isArray(i)) {
+      console.log(`filter.${ff.name}([${i}]) >>`);
     } else {
-      console.log(`filter.${ff.name}(${arrTry[i]}) >>`);
+      console.log(`filter.${ff.name}(${i}) >>`);
     }
-    filter(arrTry[i], ff);
+    filter(i, ff);
     console.log();
   } catch (error) {
     console.log(error.message, N);
