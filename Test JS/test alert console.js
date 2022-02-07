@@ -34,3 +34,14 @@ if (x <= 0 && x >= 0) {
 [0, 1, 2, 3, 4, 5, 6, 7].forEach((element) => {
   if (element > 5) console.log(element);
 });
+
+/*************************/
+
+const LEFT = "\u001B[5D";
+const UP = "\u001B[1A";
+const RIGHT = "\u001B[3С";
+const DOWN = "\u001B[1B";
+const COL = "\u001B[12G";
+const PREV = "\u001B[1F";
+console.log("zzzzzzzzzz");
+console.log(PREV + COL + "ccc"); // zzzzzzzzzz ccc
