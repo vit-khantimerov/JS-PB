@@ -136,34 +136,3 @@ console.log(globalThis); // <ref *1> Object [global] {...}
 globalThis.x = { yyy: "xxx" };
 console.log(globalThis.x); // { yyy: 'xxx' }
 
-console.log("\n*** setTimeout и setInterval ***\n");
-
-setTimeout(() => console.log("Привет"), 1000);
-
-// повторить с интервалом 2 секунды
-let t = 0;
-let timerId = setInterval(() => console.log("tick", (t += 500)), 1000);
-console.log(timerId._idleTimeout);
-// console.log(timerId);
-// остановить вывод через 10 секунд
-setTimeout(() => {
-  clearInterval(timerId);
-  console.log("\n*** Real end of Timer ********************************\n");
-}, 5000);
-
-// setTimeout(() => {
-//   while (timerId._idleTimeout > 0) {
-//     // console.log(timerId._idleTimeout);
-//     // setTimeout(() => (t += 500), 500);
-//     // t++;
-//     // console.log(t);
-//   }
-//   console.log("end while");
-// }, 1000);
-
-setTimeout(() => (t += 500), 500);
-setTimeout(() => (t += 500), 500);
-setTimeout(() => console.log((t += 500)), 500);
-
-// setTimeout(() => console.log("tId", timerId._idleTimeout), 10000);
-console.log("\n*** END of Timer ********************************\n");

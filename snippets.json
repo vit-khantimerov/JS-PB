@@ -3,7 +3,12 @@
     "prefix": "cll",
     "body": "console.log($1);\n"
   },
-   "commnt /***/": {
+   "new block /***/": {
+    "prefix": "**--",
+    "body": "\nconsole.log('\\n***********************************\\n');\n",
+	"description": "Insetr break line in console "
+  },
+   "comment /***/": {
     "prefix": "***",
     "body": "/*************************/\n",
 	"description": "Insetr break line with *** "
