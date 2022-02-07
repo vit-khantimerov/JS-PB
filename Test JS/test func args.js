@@ -38,6 +38,7 @@ arguments: [Arguments] {
 showName("Юлий", "Цезарь", "Консул", "Император");
 
 /*** оператор расширения ...x **********************/
+console.log("\n***********************************\n");
 let arr = [3, 5, 1];
 let arr2 = [8, 9, 15];
 
@@ -46,7 +47,8 @@ console.log(merged, "\nis merged an array?", Array.isArray(merged));
 // [0, 3, 5,  1, 2, 8, 9, 15]
 // is merged an array? true
 
-/*************************/
+console.log("\n***********************************\n");
+
 let str = "Привет";
 console.log([...str]); // [ 'П', 'р', 'и', 'в', 'е', 'т' ]
 
@@ -61,7 +63,7 @@ for (const item of str) {
 е
 т
 */
-console.log("***");
+console.log("\n***********************************\n");
 
 for (const item of [...str]) {
   console.log(item);
@@ -75,8 +77,7 @@ for (const item of [...str]) {
 т
 */
 
-/*************************/
-console.log("***");
+console.log("\n***********************************\n");
 
 let users = [
   { name: "John", age: 20, surname: "Johnson" },
@@ -94,8 +95,7 @@ console.log("***");
 users.sort(byField("age"));
 users.forEach((user) => console.log(user.name)); // Pete, Ann, John
 
-/*************************/
-console.log("/*************************/");
+console.log("\n***********************************\n");
 
 function sayHi0() {
   phrase0 = "Привет, Hi0!"; // (*)
@@ -108,8 +108,8 @@ function sayHi0() {
 console.log("sayHi0()");
 sayHi0();
 
-/*************************/
-console.log("***************************************\n");
+console.log("\n***********************************\n");
+
 function sayHi() {
   var phrase;
   phrase = "Привет 1";
@@ -130,15 +130,40 @@ function sayHi() {
 // } else {
 //   console.log("Ваш браузер ne старый!");
 // }
-console.log("***************************************\n");
+console.log("\n***********************************\n");
+
 console.log(globalThis); // <ref *1> Object [global] {...}
-globalThis.x = {yyy: "xxx"};
+globalThis.x = { yyy: "xxx" };
 console.log(globalThis.x); // { yyy: 'xxx' }
 
-console.log("***************************************\n");
-setTimeout(() => console.log("Привет"), 5000);
+console.log("\n*** setTimeout и setInterval ***\n");
+
+setTimeout(() => console.log("Привет"), 1000);
 
 // повторить с интервалом 2 секунды
-let timerId = setInterval(() => console.log('tick'), 2000);
+let t = 0;
+let timerId = setInterval(() => console.log("tick", (t += 500)), 1000);
+console.log(timerId._idleTimeout);
+// console.log(timerId);
 // остановить вывод через 10 секунд
-setTimeout(() => { clearInterval(timerId); console.log("stop"); }, 11000);
+setTimeout(() => {
+  clearInterval(timerId);
+  console.log("\n*** Real end of Timer ********************************\n");
+}, 5000);
+
+// setTimeout(() => {
+//   while (timerId._idleTimeout > 0) {
+//     // console.log(timerId._idleTimeout);
+//     // setTimeout(() => (t += 500), 500);
+//     // t++;
+//     // console.log(t);
+//   }
+//   console.log("end while");
+// }, 1000);
+
+setTimeout(() => (t += 500), 500);
+setTimeout(() => (t += 500), 500);
+setTimeout(() => console.log((t += 500)), 500);
+
+// setTimeout(() => console.log("tId", timerId._idleTimeout), 10000);
+console.log("\n*** END of Timer ********************************\n");
