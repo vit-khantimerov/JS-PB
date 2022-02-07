@@ -131,3 +131,14 @@ function sayHi() {
 //   console.log("Ваш браузер ne старый!");
 // }
 console.log("***************************************\n");
+console.log(globalThis); // <ref *1> Object [global] {...}
+globalThis.x = {yyy: "xxx"};
+console.log(globalThis.x); // { yyy: 'xxx' }
+
+console.log("***************************************\n");
+setTimeout(() => console.log("Привет"), 5000);
+
+// повторить с интервалом 2 секунды
+let timerId = setInterval(() => console.log('tick'), 2000);
+// остановить вывод через 10 секунд
+setTimeout(() => { clearInterval(timerId); console.log("stop"); }, 11000);

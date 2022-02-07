@@ -1,7 +1,4 @@
-"use strict";
-
-if (!window.Promise) {
-  console.log("Ваш браузер очень старый!");
-} else {
-  console.log("Ваш браузер ne старый!");
-}
+// повторить с интервалом 2 секунды
+let timerId = setInterval(() => console.log('tick'), 2000);
+// остановить вывод через 10 секунд
+setTimeout(() => { clearInterval(timerId); console.log("stop"); }, 11000);
