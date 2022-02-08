@@ -52,7 +52,7 @@ setTimeout(() => {
   clearInterval(tId3);
   clearInterval(tId4);
   console.log("\n*** End of many timers ********************************\n");
-}, 10000);
+}, 5000);
 console.log("\x1b[0m");
 /* 
 t 250+0
@@ -84,13 +84,52 @@ function run() {
   setTimeout(k, 1900);
 }
 
-setTimeout(run, 500); // func run
-// func k
-// func j
+setTimeout(run, 500);
+/*
+func run
+func k
+func j
+*/
 
 // infinity loop
+function h() {
+  console.log("func h");
+}
+let timer1 = setTimeout(function run2() {
+  console.log("func run2");
+  h(), setTimeout(run2, 1000);
+}, 1000);
+
+// setTimeout(run2,500)
+
+clearTimeout(timer1);
+
+// function func() {
+//   console.log("ii");
+// }
 // setTimeout(function run() {
-//     console.log('func run');
-//   j();
+//   func();
+//   console.log("run");
 //   setTimeout(run, 1000);
 // }, 1000);
+// // clearTimeout(timer2);
+
+console.log(
+  "\n*** Вывод чисел каждую секуду ********************************\n"
+);
+function printNumbers(from, to) {
+  let current = from;
+
+  setTimeout(function go() {
+    console.log(current);
+    if (current < to) {
+      setTimeout(go, 1000);
+    }
+    current++;
+  }, 1000);
+}
+
+// использование:
+printNumbers(5, 10);
+
+console.log("\n***********************************\n");

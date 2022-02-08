@@ -1,11 +1,18 @@
 
-console.log("\n***********************************\n");
-function ff(f) {
-  setTimeout(() => console.log("test time", f), 500);
+console.log('\n***********************************\n');
+function spy(func) {
+  function wrapper(...args) {
+    wrapper.calls.push(args);
+    return func.apply(this, arguments);
+  }
+
+  wrapper.calls = [];
+
+  return wrapper;
 }
 
-setTimeout(() => {
-  for (let index = 0; index < 10; index++) {
-    setTimeout(ff,500,index);
-  }
-}, 500);
+function f(a, b) {
+    return a + b;
+}
+
+console.log(spy(f));

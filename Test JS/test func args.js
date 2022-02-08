@@ -1,3 +1,6 @@
+// Продвинутая работа с функциями
+// https://learn.javascript.ru/advanced-functions
+
 /*** остаточные параметры ф-ции ...х **********************/
 function showName(firstName, lastName, ...titles) {
   console.log(firstName + " " + lastName); // Юлий Цезарь
