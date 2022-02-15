@@ -45,3 +45,16 @@ const COL = "\u001B[12G";
 const PREV = "\u001B[1F";
 console.log("zzzzzzzzzz");
 console.log(PREV + COL + "ccc"); // zzzzzzzzzz ccc
+
+console.log("\n***********************************\n");
+console.log(null <= 0 && null >= 0); // true
+console.log(0 <= 0 && 0 >= 0); // true
+console.log("" <= 0 && "" >= 0); // true
+console.log(!!null == 0); // false
+console.log("" == 0); // true
+console.log(!!null == 0); // true
+console.log(!null === !0); // true
+console.log(!!null === !!0); // true
+console.log(0 === -0); // true
+console.log(-1 * 0); // -0
+console.log(1 * -0); // -0

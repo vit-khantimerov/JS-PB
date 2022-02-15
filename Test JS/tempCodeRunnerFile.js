@@ -1,18 +1,12 @@
+let user = {
+  name: "Джон",
+  age: 30
+};
 
-console.log('\n***********************************\n');
-function spy(func) {
-  function wrapper(...args) {
-    wrapper.calls.push(args);
-    return func.apply(this, arguments);
-  }
+user.sayHi = function us() {
+    console.log("Привет!");
+};
 
-  wrapper.calls = [];
-
-  return wrapper;
-}
-
-function f(a, b) {
-    return a + b;
-}
-
-console.log(spy(f));
+user.sayHi(); // Привет!
+console.log(user); // { name: 'Джон', age: 30, sayHi: [Function: us] }
+console.log(user.sayHi.console);
